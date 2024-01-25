@@ -1,0 +1,133 @@
+﻿FUNCTION "MapHPUInputs" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_TEMP 
+      TempSpeed1 : Real;
+      LastCount : DInt;
+      tempgate : Bool;
+      Tempready : Bool;
+      Tempmask : DInt;
+      TempMeasured : Real;
+      Tempulint : ULInt;
+      Temp77 : Bool;
+      Tempzzero : Bool;
+      CalcSpeed : DInt;
+   END_VAR
+
+
+BEGIN
+	(* #MapHPUInputs Written BY Kristopher Gimenez January 19,2023
+	This block is will map the input variables and convert raw signals into measured values
+	*)
+	
+	//HPU Slot2 TM Count Encoder Input
+	"RotaryCounts" := "HPU_In".Slot2.COUNT_VALUE;
+	//#CalcSpeed := 60*("RotaryCounts" - "LastCount") / 22;
+	//"LastCount" :="RotaryCounts";
+	
+	//"RotaryRPM" := "HPU_In".Slot2.MEASURED_VALUE;
+	//#Tempulint := 1;
+	//IF "HPU_In".Slot2.MEASURED_VALUE > 0 THEN
+	//    #TempMeasured := ("HPU_In".Slot2.MEASURED_VALUE - 1000000000.0) / 1000000.0;
+	//ELSE
+	//    #TempMeasured := 0;
+	//END_IF;
+	//IF "HPU_In".Slot2.MEASURED_VALUE > 0 THEN
+	//    #TempSpeed1 := (#TempMeasured - 85) * 5.7037037037;
+	//ELSE
+	//    #TempSpeed1 := 0;
+	//END_IF;
+	"RotEncOvFl" := "HPU_In".Slot2.EVENT_OFLW;
+	"RotEncUnFl" := "HPU_In".Slot2.EVENT_UFLW;
+	"RotEncA" := "HPU_In".Slot2.STS_DI0;
+	"RotEncB" := "HPU_In".Slot2.STS_DI1;
+	#tempgate := "HPU_In".Slot2.STS_SW_GATE;
+	#Tempready := "HPU_In".Slot2.STS_READY;
+	#Tempzzero := "HPU_In".Slot2.EVENT_ZERO;
+	#Temp77 := "HPU_In".Slot2.LD_ERROR;
+	//HPU Slot 3 - 16 x DI
+	"AuxPumpRunning" := "HPU_In".Slot3.Ch0;
+	"CoolingFanRunning"  :="HPU_In".Slot3.Ch1;
+	"M1Running" := "HPU_In".Slot3.Ch2;
+	"M2Running" := "HPU_In".Slot3.Ch3;
+	"AuxPumpHOA":= "HPU_In".Slot3.Ch4;
+	"CoolingFanHOA" := "HPU_In".Slot3.Ch5;
+	"M1HOA" := "HPU_In".Slot3.Ch6;
+	"M2HOA" :="HPU_In".Slot3.Ch7;
+	"TDFlushFlowSw":= "HPU_In".Slot3.Ch8;
+	"TDLubeFlowSw":= "HPU_In".Slot3.Ch9;
+	"ChargePump1PSw" := "HPU_In".Slot3.Ch10;
+	"ChargePump2PSw" := "HPU_In".Slot3.Ch11;
+	
+	//HPU Slot 4 - 16 x DI
+	"TankLowLevelSw" := "HPU_In".Slot4.Ch0;
+	"TankHighTempSw" :="HPU_In".Slot4.Ch1;
+	"TDFwdFilter1" := "HPU_In".Slot4.Ch2;
+	"TDFwdFilter2" := "HPU_In".Slot4.Ch3;
+	"TDRevFilter1":= "HPU_In".Slot4.Ch4;
+	"TDRevFilter2" := "HPU_In".Slot4.Ch5;
+	"AuxReturnFilter" := "HPU_In".Slot4.Ch6;
+	"KLoopFilter" := "HPU_In".Slot4.Ch7;
+	"ChargeFilter" := 0;//"HPU_In".Slot4.Ch8;
+	"ElevClFeedback" := 0;// "HPU_In".Slot4.Ch9;
+	 
+	 //HPU Slot 5 8 x AI U
+	"M1CurrentRaw" := "HPU_In".Slot5.Ch0;
+	"M1CurrentV" := "AiV_Raw2V"("M1CurrentRaw");
+	"M2CurrentRaw" := "HPU_In".Slot5.Ch1;
+	"M2CurrentV" := "AiV_Raw2V"("M2CurrentRaw");
+	"HPU_AiV2SpareRaw" :="HPU_In".Slot5.Ch2;
+	"HPU_AiV2SpareV"  := "AiV_Raw2V"("HPU_AiV2SpareRaw" );
+	"HPU_AiV3SpareRaw" := "HPU_In".Slot5.Ch3;
+	"HPU_AiV3SpareV" := "AiV_Raw2V"("HPU_AiV3SpareRaw");
+	"HPU_AiV4SpareRaw" := "HPU_In".Slot5.Ch4;
+	"HPU_AiV4SpareV" := "AiV_Raw2V"("HPU_AiV4SpareRaw");
+	"HPU_AiV5SpareRaw" := "HPU_In".Slot5.Ch5;
+	"HPU_AiV5SpareV" := "AiV_Raw2V"("HPU_AiV5SpareRaw");
+	"HPU_AiV6SpareRaw" := "HPU_In".Slot5.Ch6;
+	"HPU_AiV6SpareV" := "AiV_Raw2V"("HPU_AiV6SpareRaw");
+	"HPU_AiV7SpareRaw" := "HPU_In".Slot5.Ch7;
+	"HPU_AiV7SpareV" := "AiV_Raw2V"("HPU_AiV7SpareRaw");
+	
+	
+	//HPU Slot 6 8 x AI 4-20ma
+	"TDPressFWDRaw" := "HPU_In".Slot6.Ch0;
+	"TDPressFWDmA" := "AiV_Raw2mA"("TDPressFWDRaw");
+	"TDPressREVRaw" := "HPU_In".Slot6.Ch1;
+	"TDPressREVmA" := "AiV_Raw2mA"("TDPressREVRaw");
+	"ClosedLoopTempRaw" := "HPU_In".Slot6.Ch2;
+	"ClosedLoopTempmA" := "AiV_Raw2mA"("ClosedLoopTempRaw");
+	"ChargeFlowRaw" := "HPU_In".Slot6.Ch3;
+	"ChargeFlowmA" := "AiV_Raw2mA"("ChargeFlowRaw");
+	"HotOilShuttleFlowRaw" := "HPU_In".Slot6.Ch4;
+	"HotOilShuttleFlowmA" := "AiV_Raw2mA"("HotOilShuttleFlowRaw");
+	"AuxFlowRaw" := "HPU_In".Slot6.Ch5;
+	"AuxFlowmA" := "AiV_Raw2mA"("AuxFlowRaw");
+	"ChargePress1Raw" := "HPU_In".Slot6.Ch6;
+	"ChargePress1mA" := "AiV_Raw2mA"("ChargePress1Raw");
+	"ChargePress2Raw" := "HPU_In".Slot6.Ch7;
+	"ChargePress2mA" := "AiV_Raw2mA"("ChargePress2Raw");
+	
+	
+	//Slot 7 TM Pulse status inputs
+	"TDP1FwdCmdActRaw" := "HPU_In".Slot7.Ch0.MEASURE_CURRENT;
+	"TDP1FwdCmdActmA" := "TM_Pulse_Raw2mA"("TDP1FwdCmdActRaw");
+	"TDP1RevCmdActRaw" := "HPU_In".Slot7.Ch1.MEASURE_CURRENT;
+	"TDP1RevCmdActmA" := "TM_Pulse_Raw2mA"("TDP1RevCmdActRaw");
+	
+	
+	//Slot 8 TM Pulse status inputs
+	"TDP2FwdCmdActRaw" := "HPU_In".Slot8.Ch0.MEASURE_CURRENT;
+	"TDP2FwdCmdActmA" := "TM_Pulse_Raw2mA"("TDP2FwdCmdActRaw");
+	"TDP2RevCmdActRaw" := "HPU_In".Slot8.Ch1.MEASURE_CURRENT;
+	"TDP2RevCmdActmA" := "TM_Pulse_Raw2mA"("TDP2RevCmdActRaw");
+	
+	//Slot 9 TM Pulse status inputs
+	"TDTorqCmdActRaw" :="HPU_In".Slot9.Ch0.MEASURE_CURRENT;
+	"TDTorqCmdActmA":="TM_Pulse_Raw2mA"("TDTorqCmdActRaw");
+	
+	
+	
+	
+END_FUNCTION
+

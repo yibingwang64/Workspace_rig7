@@ -1,0 +1,1070 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V18" />
+  <SW.Blocks.GlobalDB ID="0">
+    <AttributeList>
+      <AutoNumber>false</AutoNumber>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Static">
+    <Member Name="ActTorqAlpha" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Low Pass Filter, Alpha be &gt;= 0 and &lt; 1. 0 No filterting. </MultiLanguageText>
+      </Comment>
+      <StartValue>0.0</StartValue>
+    </Member>
+    <Member Name="AlarmDebounce" Datatype="Time" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Time an alarm must be present before setting</MultiLanguageText>
+      </Comment>
+      <StartValue>T#500MS</StartValue>
+    </Member>
+    <Member Name="MUTorqAutoSet1per" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Perfent of MU a torq low Set point to allow full speed ramp</MultiLanguageText>
+      </Comment>
+      <StartValue>65.0</StartValue>
+    </Member>
+    <Member Name="MUTorqAutoSet2per" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Percent of MU Torq high setpoint to say complete</MultiLanguageText>
+      </Comment>
+      <StartValue>90.0</StartValue>
+    </Member>
+    <Member Name="MUAutoHoldTime" Datatype="Time" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Time System will hold max torq before ramping down</MultiLanguageText>
+      </Comment>
+      <StartValue>T#2S_150MS</StartValue>
+    </Member>
+    <Member Name="MUAutoSlewLow" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Slew rate for Auto make up rising in low torque. mA/Sec</MultiLanguageText>
+      </Comment>
+      <StartValue>150.0</StartValue>
+    </Member>
+    <Member Name="MUAutoSlewMid" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Slew rate for Auto make up rising in mid torq. mA/Sec</MultiLanguageText>
+      </Comment>
+      <StartValue>25.0</StartValue>
+    </Member>
+    <Member Name="AuxFlowMinGPM" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Min Value of flow transducer</MultiLanguageText>
+      </Comment>
+      <StartValue>5.0</StartValue>
+    </Member>
+    <Member Name="AuxFlowMaxGPM" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">MAx Value of flow transducer</MultiLanguageText>
+      </Comment>
+      <StartValue>25.0</StartValue>
+    </Member>
+    <Member Name="AuxFlowAlpha" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Low Pass Filter, Alpha be &gt;= 0 and &lt; 1. 0 No filterting. </MultiLanguageText>
+      </Comment>
+      <StartValue>0.0</StartValue>
+    </Member>
+    <Member Name="BOFlowSlewRise" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Rising Slew Rate mA/sec on Flow Output</MultiLanguageText>
+      </Comment>
+      <StartValue>500.0</StartValue>
+    </Member>
+    <Member Name="BOFlowSlewFall" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Falling Slew Rate mA/sec on Flow Output</MultiLanguageText>
+      </Comment>
+      <StartValue>80.0</StartValue>
+    </Member>
+    <Member Name="BOSpinFactor" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">BO Flow will be set to MU Spin Percent times this factor to break connection. before slowing back down to Spin Speed</MultiLanguageText>
+      </Comment>
+      <StartValue>1.25</StartValue>
+    </Member>
+    <Member Name="BOShiftRPM" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">In BO above this speed, system will switch  from BO Speed setting to Spin setting</MultiLanguageText>
+      </Comment>
+      <StartValue>4.0</StartValue>
+    </Member>
+    <Member Name="BypassTime" Datatype="Time" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Time for Bypass to finish running</MultiLanguageText>
+      </Comment>
+      <StartValue>T#2S</StartValue>
+    </Member>
+    <Member Name="BypassFlowPer" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Output to flow in percent valve in Bypass mode</MultiLanguageText>
+      </Comment>
+      <StartValue>50.0</StartValue>
+    </Member>
+    <Member Name="BypassTorqFtlbs" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Output to torqur valve in Bypass mode. Actual Value TBD</MultiLanguageText>
+      </Comment>
+      <StartValue>12000.0</StartValue>
+    </Member>
+    <Member Name="CATEngPPR" Datatype="Int" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">CAT Engine PPR. </MultiLanguageText>
+      </Comment>
+      <StartValue>113</StartValue>
+    </Member>
+    <Member Name="CATMinRPM" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Minimum running RPM of CAT. Used to trigger Enginer fault</MultiLanguageText>
+      </Comment>
+      <StartValue>1200.0</StartValue>
+    </Member>
+    <Member Name="CATFaultTime" Datatype="Time" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Time for CAT to get up to speed before fault</MultiLanguageText>
+      </Comment>
+      <StartValue>T#15S</StartValue>
+    </Member>
+    <Member Name="ChargeFlowMinGPM" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Min Value of flow transducer</MultiLanguageText>
+      </Comment>
+      <StartValue>5.0</StartValue>
+    </Member>
+    <Member Name="ChargeFlowMaxGPM" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">MAx Value of flow transducer</MultiLanguageText>
+      </Comment>
+      <StartValue>1000.0</StartValue>
+    </Member>
+    <Member Name="ChargeFlowAlpha" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Low Pass Filter, Alpha be &gt;= 0 and &lt; 1. 0 No filterting. </MultiLanguageText>
+      </Comment>
+      <StartValue>0.0</StartValue>
+    </Member>
+    <Member Name="ChargePress1Min" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Min value of transducer range</MultiLanguageText>
+      </Comment>
+      <StartValue>0.0</StartValue>
+    </Member>
+    <Member Name="ChargePress1Max" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Max Value of transducer range</MultiLanguageText>
+      </Comment>
+      <StartValue>6000.0</StartValue>
+    </Member>
+    <Member Name="ChargePress1Alpha" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Low Pass Filter, Alpha be &gt;= 0 and &lt; 1. 0 No filterting. </MultiLanguageText>
+      </Comment>
+      <StartValue>0.0</StartValue>
+    </Member>
+    <Member Name="ChargePress2Min" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Min value of transducer range</MultiLanguageText>
+      </Comment>
+      <StartValue>0.0</StartValue>
+    </Member>
+    <Member Name="ChargePress2Max" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Max Value of transducer range</MultiLanguageText>
+      </Comment>
+      <StartValue>6000.0</StartValue>
+    </Member>
+    <Member Name="ChargePress2Alpha" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Low Pass Filter, Alpha be &gt;= 0 and &lt; 1. 0 No filterting. </MultiLanguageText>
+      </Comment>
+      <StartValue>-7111.111</StartValue>
+    </Member>
+    <Member Name="ChargeFaultMinPress" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Min charge pressure before fault shown</MultiLanguageText>
+      </Comment>
+      <StartValue>200.0</StartValue>
+    </Member>
+    <Member Name="ChargeFaultMaxPress" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Max Charge pressure before fautl</MultiLanguageText>
+      </Comment>
+      <StartValue>1000.0</StartValue>
+    </Member>
+    <Member Name="CLTempMinC" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Min value of Closed loop Temp transducer</MultiLanguageText>
+      </Comment>
+      <StartValue>0.0</StartValue>
+    </Member>
+    <Member Name="CLTempMaxC" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Max value of Closed loop Temp transducer</MultiLanguageText>
+      </Comment>
+      <StartValue>204.0</StartValue>
+    </Member>
+    <Member Name="CLTempMinF" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <StartValue>0.0</StartValue>
+    </Member>
+    <Member Name="CLTempMaxF" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <StartValue>400.0</StartValue>
+    </Member>
+    <Member Name="CLTempAlpha" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Low Pass Filter, Alpha be &gt;= 0 and &lt; 1. 0 No filterting. </MultiLanguageText>
+      </Comment>
+      <StartValue>0.0</StartValue>
+    </Member>
+    <Member Name="CLHiTempAlarmF" Datatype="Real">
+      <StartValue>158.0</StartValue>
+    </Member>
+    <Member Name="CLHiTempAlarm" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Closed loop temp in C where alarm comes on. Value for Mobil SCH S26 - Hydrex MV60 - 64</MultiLanguageText>
+      </Comment>
+      <StartValue>70.0</StartValue>
+    </Member>
+    <Member Name="CLHiTempRPMF" Datatype="Real">
+      <StartValue>161.6</StartValue>
+    </Member>
+    <Member Name="ClHiTempRPM" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Closed loop temp in c where RPM is reduced Value for Mobil SCH S26 - Hydrex MV60 - 66</MultiLanguageText>
+      </Comment>
+      <StartValue>72.0</StartValue>
+    </Member>
+    <Member Name="ClHiTempShutdownF" Datatype="Real">
+      <StartValue>165.2</StartValue>
+    </Member>
+    <Member Name="ClHiTempShutdown" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Closed loop temp in C where TD shutsdown Value for Mobil SCH S26 - Hydrex MV60 - 68</MultiLanguageText>
+      </Comment>
+      <StartValue>74.0</StartValue>
+    </Member>
+    <Member Name="ClHiTempBypassF" Datatype="Real">
+      <StartValue>161.6</StartValue>
+    </Member>
+    <Member Name="ClHiTempBypass" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Closed loop Temp in C where Bypass stopped Value for Mobil SCH S26 - Hydrex MV60 - 66</MultiLanguageText>
+      </Comment>
+      <StartValue>72.0</StartValue>
+    </Member>
+    <Member Name="ClHiTempRPMmA" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">The max mA output in high temp reduced RPM mode</MultiLanguageText>
+      </Comment>
+      <StartValue>410.0</StartValue>
+    </Member>
+    <Member Name="CoolingFanTempC" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Temperature at which point cooling fan will turn on</MultiLanguageText>
+      </Comment>
+      <StartValue>65.0</StartValue>
+    </Member>
+    <Member Name="CoolingFanTimeOn" Datatype="Time" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">The time the cooling fan will stay on for after temp below setpoint</MultiLanguageText>
+      </Comment>
+      <StartValue>T#30S</StartValue>
+    </Member>
+    <Member Name="DrillTorqPotAlpha" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Low Pass Filter, Alpha be &gt;= 0 and &lt; 1. 0 No filterting. </MultiLanguageText>
+      </Comment>
+      <StartValue>0.0</StartValue>
+    </Member>
+    <Member Name="DrillThrottleAlpha" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Low Pass Filter, Alpha be &gt;= 0 and &lt; 1. 0 No filterting. </MultiLanguageText>
+      </Comment>
+      <StartValue>0.0</StartValue>
+    </Member>
+    <Member Name="DrillTorqLimLowPer" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Percent of Drill a torq Low Set point to allow before destroke flow for torq limit</MultiLanguageText>
+      </Comment>
+      <StartValue>80.0</StartValue>
+    </Member>
+    <Member Name="DrillTorqLimHighPer" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Percent of Drill a torq High Set point before destroke flow for torq limit</MultiLanguageText>
+      </Comment>
+      <StartValue>97.0</StartValue>
+    </Member>
+    <Member Name="DrillTorqLimTime" Datatype="Time" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Debounce time that torq can be above low limit before limiting flow. </MultiLanguageText>
+      </Comment>
+      <StartValue>T#50MS</StartValue>
+    </Member>
+    <Member Name="DrillTorqLimSlewRise" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Rising Slew Rate mA/sec on Torq output not in Auto Mode</MultiLanguageText>
+      </Comment>
+      <StartValue>5.0</StartValue>
+    </Member>
+    <Member Name="DrillTorqLimSlewFall" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Falling Slew Rate mA/sec on Torq output not in Auto Mode</MultiLanguageText>
+      </Comment>
+      <StartValue>20.0</StartValue>
+    </Member>
+    <Member Name="FlushFlowFaultTime" Datatype="Time" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Time with flow while aux pump is running before fault</MultiLanguageText>
+      </Comment>
+      <StartValue>T#10S</StartValue>
+    </Member>
+    <Member Name="HeartbeatTimeout" Datatype="Time" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Time heartbeat signal can remain unchanged before IO is dropped from remote console. </MultiLanguageText>
+      </Comment>
+      <StartValue>T#3S</StartValue>
+    </Member>
+    <Member Name="HotOilFlowMinGPM" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Min Value of flow transducer</MultiLanguageText>
+      </Comment>
+      <StartValue>5.0</StartValue>
+    </Member>
+    <Member Name="HotOilFlowMaxGPM" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">MAx Value of flow transducer</MultiLanguageText>
+      </Comment>
+      <StartValue>1000.0</StartValue>
+    </Member>
+    <Member Name="HotOilFlowAlpha" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Low Pass Filter, Alpha be &gt;= 0 and &lt; 1. 0 No filterting. </MultiLanguageText>
+      </Comment>
+      <StartValue>0.0</StartValue>
+    </Member>
+    <Member Name="HornOnTime" Datatype="Time" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Time horn output is on when horn requested</MultiLanguageText>
+      </Comment>
+      <StartValue>T#1S_500MS</StartValue>
+    </Member>
+    <Member Name="HornSilenceTime" Datatype="Time" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Time horn will turn off if high temp shutdown</MultiLanguageText>
+      </Comment>
+      <StartValue>T#30S</StartValue>
+    </Member>
+    <Member Name="HSLTShiftTime" Datatype="Time" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Time to allow system to shift before outputting to pump</MultiLanguageText>
+      </Comment>
+      <StartValue>T#2S</StartValue>
+    </Member>
+    <Member Name="LampTestTime" Datatype="Time" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Time lamps will be on during lamp test</MultiLanguageText>
+      </Comment>
+      <StartValue>T#2S</StartValue>
+    </Member>
+    <Member Name="LamptTestHornTime" Datatype="Time" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="en-US">Time horn will be on during lamp test</MultiLanguageText>
+      </Comment>
+      <StartValue>T#2S</StartValue>
+    </Member>
+    <Member Name="LSHTShiftTime" Datatype="Time" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Time to allow system to shift before outputting to pump</MultiLanguageText>
+      </Comment>
+      <StartValue>T#4S</StartValue>
+    </Member>
+    <Member Name="LubeFlowFaultTime" Datatype="Time" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Time After aux pump runnign before flow to be seen or alarm</MultiLanguageText>
+      </Comment>
+      <StartValue>T#10S</StartValue>
+    </Member>
+    <Member Name="M1CurrentMin" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Min value of M1 Current Input- TBD actual values</MultiLanguageText>
+      </Comment>
+      <StartValue>0.0</StartValue>
+    </Member>
+    <Member Name="M1CurrentMax" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Max value of M1 Current Input- TBD actual values</MultiLanguageText>
+      </Comment>
+      <StartValue>100.0</StartValue>
+    </Member>
+    <Member Name="M1CurrentAlpha" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Low Pass Filter, Alpha be &gt;= 0 and &lt; 1. 0 No filterting. </MultiLanguageText>
+      </Comment>
+      <StartValue>0.0</StartValue>
+    </Member>
+    <Member Name="M2CurrentMin" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Min value of M2 Current Input- TBD actual values</MultiLanguageText>
+      </Comment>
+      <StartValue>0.0</StartValue>
+    </Member>
+    <Member Name="M2CurrentMax" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Max value of M2 Current Input - TBD actual values</MultiLanguageText>
+      </Comment>
+      <StartValue>100.0</StartValue>
+    </Member>
+    <Member Name="M2CurrentAlpha" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Low Pass Filter, Alpha be &gt;= 0 and &lt; 1. 0 No filterting. </MultiLanguageText>
+      </Comment>
+      <StartValue>0.0</StartValue>
+    </Member>
+    <Member Name="MotorFaultTime" Datatype="Time" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Time before signalling a motor fault if not started after start signal sent</MultiLanguageText>
+      </Comment>
+      <StartValue>T#15S</StartValue>
+    </Member>
+    <Member Name="MUDoneTHper" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Torque threshold percent to determne mu done</MultiLanguageText>
+      </Comment>
+      <StartValue>60.0</StartValue>
+    </Member>
+    <Member Name="MUSpinAdjInc" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Increment in which the MU Spin value will adjust when requested</MultiLanguageText>
+      </Comment>
+      <StartValue>5.0</StartValue>
+    </Member>
+    <Member Name="MUSpinMaxSpeedPer" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">The MU Spin max setting to limit user adjustment</MultiLanguageText>
+      </Comment>
+      <StartValue>80.0</StartValue>
+    </Member>
+    <Member Name="MUSpinTorqFtlbs" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">MU Spin torq settings. If Actual torq above this value spin complete</MultiLanguageText>
+      </Comment>
+      <StartValue>2000.0</StartValue>
+    </Member>
+    <Member Name="MUTorqSlewRise" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Rising Slew Rate mA/sec on Torq output not in Auto Mode</MultiLanguageText>
+      </Comment>
+      <StartValue>45.0</StartValue>
+    </Member>
+    <Member Name="MUTorqSlewFall" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Falling Slew Rate mA/sec on Torq output not in Auto Mode</MultiLanguageText>
+      </Comment>
+      <StartValue>150.0</StartValue>
+    </Member>
+    <Member Name="MUFlowSlewRise" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Rising Slew Rate mA/sec on Flow Output</MultiLanguageText>
+      </Comment>
+      <StartValue>25.0</StartValue>
+    </Member>
+    <Member Name="MUFlowSlewFall" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Falling Slew Rate mA/sec on Flow Output</MultiLanguageText>
+      </Comment>
+      <StartValue>150.0</StartValue>
+    </Member>
+    <Member Name="MUFlowMinmA" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Min mA Output to Flow Pump in MU Torq</MultiLanguageText>
+      </Comment>
+      <StartValue>150.0</StartValue>
+    </Member>
+    <Member Name="MUFlowMaxmA" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Max mA Output to Flow Pump in MU Torq </MultiLanguageText>
+      </Comment>
+      <StartValue>800.0</StartValue>
+    </Member>
+    <Member Name="MUTorqPotAlpha" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Low Pass Filter, Alpha be &gt;= 0 and &lt; 1. 0 No filterting. </MultiLanguageText>
+      </Comment>
+      <StartValue>0.0</StartValue>
+    </Member>
+    <Member Name="OscMaxSpeedRPM" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Maximum rotary speed setpoint allowed for Oscialltor operation. </MultiLanguageText>
+      </Comment>
+      <StartValue>30.0</StartValue>
+    </Member>
+    <Member Name="OscMaxTorqFtLbs" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Maximum torq setpoint allowed for Oscialltor operation. </MultiLanguageText>
+      </Comment>
+      <StartValue>20000.0</StartValue>
+    </Member>
+    <Member Name="OscTorqLimLowPer" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Percent of Osc torq Low Set point to allow before destroke flow for torq limit</MultiLanguageText>
+      </Comment>
+      <StartValue>90.0</StartValue>
+    </Member>
+    <Member Name="OscTorqLimHighPer" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Percent of Osc  torq High Set point before destroke flow for torq limit</MultiLanguageText>
+      </Comment>
+      <StartValue>97.0</StartValue>
+    </Member>
+    <Member Name="OscTorqLimTime" Datatype="Time" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Debounce time that torq can be above low limit before limiting flow. </MultiLanguageText>
+      </Comment>
+      <StartValue>T#1MS</StartValue>
+    </Member>
+    <Member Name="PotZero" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Any percentage below this will be considered a zero input from the throttle. </MultiLanguageText>
+      </Comment>
+      <StartValue>5.0</StartValue>
+    </Member>
+    <Member Name="PumpOutMinmA" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Minimum mA setting to valve</MultiLanguageText>
+      </Comment>
+      <StartValue>200.0</StartValue>
+    </Member>
+    <Member Name="PumpOutMaxmA" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">MaximummA setting to valve</MultiLanguageText>
+      </Comment>
+      <StartValue>700.0</StartValue>
+    </Member>
+    <Member Name="RotEncPPR" Datatype="Int" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Rotatry Encoder Counts per revolution</MultiLanguageText>
+      </Comment>
+      <StartValue>22</StartValue>
+    </Member>
+    <Member Name="RotStoppedTime" Datatype="Time" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Time without an encoder count before declaring stopped. </MultiLanguageText>
+      </Comment>
+      <StartValue>T#2S</StartValue>
+    </Member>
+    <Member Name="SpeedLimLowRPM" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Speed limiter lower threshold</MultiLanguageText>
+      </Comment>
+      <StartValue>183.0</StartValue>
+    </Member>
+    <Member Name="SpeedLimHighRPM" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Speed limiter upper threshold</MultiLanguageText>
+      </Comment>
+      <StartValue>190.0</StartValue>
+    </Member>
+    <Member Name="SpeedLimSlewRise" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Rising Slew Rate mA/sec on Flow Output</MultiLanguageText>
+      </Comment>
+      <StartValue>10.0</StartValue>
+    </Member>
+    <Member Name="SpeedLimSlewFall" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Falling Slew Rate mA/sec on Flow Output</MultiLanguageText>
+      </Comment>
+      <StartValue>10.0</StartValue>
+    </Member>
+    <Member Name="SpinSpeedPer" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">TheSpin speed setting in percent. User adjustable with Link Tilt. Value used for BO Spin also</MultiLanguageText>
+      </Comment>
+      <StartValue>25.0</StartValue>
+    </Member>
+    <Member Name="TDFwdPressMin" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Min value of TD Fwd Press transducer</MultiLanguageText>
+      </Comment>
+      <StartValue>0.0</StartValue>
+    </Member>
+    <Member Name="TDFwdPressMax" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Max value of TD Fwd Press transducer</MultiLanguageText>
+      </Comment>
+      <StartValue>5800.0</StartValue>
+    </Member>
+    <Member Name="TDFwdPressAlpha" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Low Pass Filter, Alpha be &gt;= 0 and &lt; 1. 0 No filterting. </MultiLanguageText>
+      </Comment>
+      <StartValue>0.0</StartValue>
+    </Member>
+    <Member Name="TDRevPressMax" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Max value of TD Rev Press transducer</MultiLanguageText>
+      </Comment>
+      <StartValue>5800.0</StartValue>
+    </Member>
+    <Member Name="TDRevPressMin" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Min value of TD Rev Press transducer</MultiLanguageText>
+      </Comment>
+      <StartValue>0.0</StartValue>
+    </Member>
+    <Member Name="TDRevPressAlpha" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Low Pass Filter, Alpha be &gt;= 0 and &lt; 1. 0 No filterting. </MultiLanguageText>
+      </Comment>
+      <StartValue>0.0</StartValue>
+    </Member>
+    <Member Name="TorqEFactorLow" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">0-1. Efficiency of Torque reading when below 5 RPM</MultiLanguageText>
+      </Comment>
+      <StartValue>0.97</StartValue>
+    </Member>
+    <Member Name="TorqEFactorHigh" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">0-1. Efficiency of Torque reading when below 5 RPM</MultiLanguageText>
+      </Comment>
+      <StartValue>0.97</StartValue>
+    </Member>
+    <Member Name="TorqInHSLT" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">ft-lbs /psi in High speed low torque. </MultiLanguageText>
+      </Comment>
+      <StartValue>3.56</StartValue>
+    </Member>
+    <Member Name="TorqInLSHT" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">ft-lbs / psi in low speed high torque.</MultiLanguageText>
+      </Comment>
+      <StartValue>7.119</StartValue>
+    </Member>
+    <Member Name="TorqPotMaxFtLbs" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Max value in ft-lbs that the input pot should read(Actual value TBD)</MultiLanguageText>
+      </Comment>
+      <StartValue>30000.0</StartValue>
+    </Member>
+    <Member Name="TorqOutExtraPSI" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Extra PSI value added to torque output to overcome charge pressure</MultiLanguageText>
+      </Comment>
+      <StartValue>51.60006</StartValue>
+    </Member>
+    <Member Name="TorqOutMinmA" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Minimum mA setting to valve</MultiLanguageText>
+      </Comment>
+      <StartValue>100.0</StartValue>
+    </Member>
+    <Member Name="TorqOutMaxmA" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">MaximummA setting to valve</MultiLanguageText>
+      </Comment>
+      <StartValue>800.0</StartValue>
+    </Member>
+    <Member Name="TorqOutMinPSI" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Minimum PSI setting on Torq valve</MultiLanguageText>
+      </Comment>
+      <StartValue>0.0</StartValue>
+    </Member>
+    <Member Name="TorqOutMaxPSI" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Maximum PSI setting on Torq Valve</MultiLanguageText>
+      </Comment>
+      <StartValue>5075.0</StartValue>
+    </Member>
+    <Member Name="TorqOutHSLT" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">ft-lbs /psi at output vavle in High speed low torque. Current values are same as Feedback actual value TBD</MultiLanguageText>
+      </Comment>
+      <StartValue>3.56</StartValue>
+    </Member>
+    <Member Name="TorqOutLSHT" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">ft-lbs / psi output vavle in low speed high torque.Current values are same as Feedback actual value TBD</MultiLanguageText>
+      </Comment>
+      <StartValue>7.119</StartValue>
+    </Member>
+    <Member Name="TorqSetFactor" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Torq setpoint factor to increase the setpoint  to ensure desired torq is reached.  Torq limiting will be controlled via flow. </MultiLanguageText>
+      </Comment>
+      <StartValue>1.0</StartValue>
+    </Member>
+  </Section>
+</Sections></Interface>
+      <MemoryLayout>Optimized</MemoryLayout>
+      <MemoryReserve>100</MemoryReserve>
+      <Name>Settings</Name>
+      <Namespace />
+      <Number>100</Number>
+      <ProgrammingLanguage>DB</ProgrammingLanguage>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="3" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.GlobalDB>
+</Document>

@@ -1,0 +1,16 @@
+﻿FUNCTION "F_To_C_Convert" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT 
+      Fdegree : Real;
+   END_VAR
+
+   VAR_OUTPUT 
+      Cdegree : Real;
+   END_VAR
+
+
+BEGIN
+	#Cdegree := (#Fdegree - 32.0) * 5 / 9.0;
+END_FUNCTION
+

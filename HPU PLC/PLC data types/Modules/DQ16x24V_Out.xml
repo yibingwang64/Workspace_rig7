@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V18" />
+  <SW.Types.PlcStruct ID="0">
+    <AttributeList>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="None">
+    <Member Name="Ch0" Datatype="Bool" />
+    <Member Name="Ch1" Datatype="Bool" />
+    <Member Name="Ch2" Datatype="Bool" />
+    <Member Name="Ch3" Datatype="Bool" />
+    <Member Name="Ch4" Datatype="Bool" />
+    <Member Name="Ch5" Datatype="Bool" />
+    <Member Name="Ch6" Datatype="Bool" />
+    <Member Name="Ch7" Datatype="Bool" />
+    <Member Name="Ch8" Datatype="Bool" />
+    <Member Name="Ch9" Datatype="Bool" />
+    <Member Name="Ch10" Datatype="Bool" />
+    <Member Name="Ch11" Datatype="Bool" />
+    <Member Name="Ch12" Datatype="Bool" />
+    <Member Name="Ch13" Datatype="Bool" />
+    <Member Name="Ch14" Datatype="Bool" />
+    <Member Name="Ch15" Datatype="Bool" />
+  </Section>
+</Sections></Interface>
+      <Name>DQ16x24V_Out</Name>
+      <Namespace />
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="3" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Types.PlcStruct>
+</Document>

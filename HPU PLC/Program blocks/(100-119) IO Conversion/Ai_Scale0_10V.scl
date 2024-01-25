@@ -1,0 +1,27 @@
+﻿FUNCTION "Ai_Scale0_10V" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT 
+      VoltInput : Real;   // 0-10 Volt Input
+      OutMin : Real;
+      OutMax : Real;
+   END_VAR
+
+   VAR_OUTPUT 
+      OutScaledReal : Real;
+   END_VAR
+
+
+BEGIN
+	(* Ai_Scale0_10V Written BY Kristopher Gimenez January 24,2023
+	This block is used to convert a 0-10mA input to a scaled output based on input Min and Max
+	*)
+	
+	
+	#OutScaledReal := (#"VoltInput"/ 10 * (#OutMax - #OutMin)) + #OutMin;
+	
+	
+	
+	
+END_FUNCTION
+

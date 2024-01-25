@@ -1,0 +1,334 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V18" />
+  <SW.Blocks.InstanceDB ID="0">
+    <AttributeList>
+      <AutoNumber>false</AutoNumber>
+      <InstanceOfName>Oscillate</InstanceOfName>
+      <InstanceOfType>FB</InstanceOfType>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Input">
+    <Member Name="Start" Datatype="Bool" />
+  </Section>
+  <Section Name="Output">
+    <Member Name="FlowmAOut" Datatype="Real" />
+    <Member Name="TorqmAOut" Datatype="Real" />
+    <Member Name="EnableP1Fwd" Datatype="Bool" />
+    <Member Name="EnableP2Fwd" Datatype="Bool" />
+    <Member Name="EnableP1Rev" Datatype="Bool" />
+    <Member Name="EnableP2Rev" Datatype="Bool" />
+    <Member Name="TorqEn" Datatype="Bool" />
+  </Section>
+  <Section Name="InOut" />
+  <Section Name="Static">
+    <Member Name="FlowRev" Datatype="Bool" />
+    <Member Name="PumpToggle" Datatype="Bool" />
+    <Member Name="Oscillating" Datatype="Bool" />
+    <Member Name="Holding" Datatype="Bool" />
+    <Member Name="OscState" Datatype="Int" />
+    <Member Name="CalcFlowmA" Datatype="Real" />
+    <Member Name="LimitFlowmA" Datatype="Real" />
+    <Member Name="HomePosAbsDeg" Datatype="Real" />
+    <Member Name="HomePosAbsDegNew" Datatype="Real" />
+    <Member Name="HomeRelDegNew" Datatype="Real" />
+    <Member Name="MinmAHigh" Datatype="Bool" />
+    <Member Name="HoldmALow" Datatype="Bool" />
+    <Member Name="BumpReactiveTrig" Datatype="Bool" />
+    <Member Name="BumpFwdTrig" Datatype="Bool" />
+    <Member Name="BumpRevTrig" Datatype="Bool" />
+    <Member Name="StartDeg" Datatype="Real" />
+    <Member Name="HoldFwdFastInc" Datatype="Bool">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="HoldFwdSlowInc" Datatype="Bool" />
+    <Member Name="HoldFwdFastIDec" Datatype="Bool" />
+    <Member Name="HoldFwdSlowDev" Datatype="Bool" />
+    <Member Name="HoldRevFastInc" Datatype="Bool" />
+    <Member Name="HoldRevSlowInc" Datatype="Bool" />
+    <Member Name="HoldRevFastIDec" Datatype="Bool" />
+    <Member Name="HoldRevSlowDev" Datatype="Bool" />
+    <Member Name="HoldFwdTorqLim" Datatype="Bool" />
+    <Member Name="HoldRevTorqLim" Datatype="Bool" />
+    <Member Name="MinSetWarn_TON" Datatype="TON_TIME" Version="1.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="HoldFWDFast_SlewInc" Datatype="&quot;SlewInc&quot;">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="HoldFWDSlow_SlewInc" Datatype="&quot;SlewInc&quot;">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="HoldFWDSlow_SlewDec" Datatype="&quot;SlewDec&quot;">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="HoldFWDFast_SlewDec" Datatype="&quot;SlewDec&quot;">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="HoldFWDTorqLim_TON" Datatype="TON_TIME" Version="1.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="HoldFwdTorqLim_SlewDec" Datatype="&quot;SlewDec&quot;">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="HoldFwdTorqLim_SlewInc" Datatype="&quot;SlewInc&quot;">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="HoldRevTorqLim_TON" Datatype="TON_TIME" Version="1.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="HoldRevTorqLimTrig" Datatype="Bool" />
+    <Member Name="HoldFwdTorqLimTrig" Datatype="Bool">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="HoldRevTorqLim_SlewDec" Datatype="&quot;SlewDec&quot;">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="HoldRevTorqLim_SlewInc" Datatype="&quot;SlewInc&quot;">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="HoldRevFast_SlewInc" Datatype="&quot;SlewInc&quot;">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="HoldRevSlow_SlewInc" Datatype="&quot;SlewInc&quot;">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="HoldRevSlow_SlewDec" Datatype="&quot;SlewDec&quot;">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="HoldRevFast_SlewDec" Datatype="&quot;SlewDec&quot;">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="OscFwdTorqLim" Datatype="Bool">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="OscRevTorqLim" Datatype="Bool" />
+    <Member Name="OscFwdTrig" Datatype="Bool" />
+    <Member Name="OscRevTrig" Datatype="Bool" />
+    <Member Name="HMIBumpFwdLast" Datatype="Bool" />
+    <Member Name="HMIBumpRevLast" Datatype="Bool" />
+    <Member Name="HMIBumpReactLast" Datatype="Bool" />
+    <Member Name="OscFwdAbsDeg" Datatype="Real" />
+    <Member Name="OscFwdAbsSlowdown" Datatype="Real" />
+    <Member Name="OscRevAbsDeg" Datatype="Real" />
+    <Member Name="OscRevAbsSlowdown" Datatype="Real" />
+    <Member Name="OscFWDTorqLim_TON" Datatype="TON_TIME" Version="1.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="OscFwdTorqLimTrig" Datatype="Bool" />
+    <Member Name="OscFwdTorqLim_SlewDec" Datatype="&quot;SlewDec&quot;">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="OscFwdTorqLim_SlewInc" Datatype="&quot;SlewInc&quot;">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="OscFWDFast_SlewInc" Datatype="&quot;SlewInc&quot;">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="OscFWDSlow_SlewInc" Datatype="&quot;SlewInc&quot;">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="OscFWDSlow_SlewDec" Datatype="&quot;SlewDec&quot;">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="OscFWDFast_SlewDec" Datatype="&quot;SlewDec&quot;">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="OscRevTorqLim_TON" Datatype="TON_TIME" Version="1.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="OscRevTorqLimTrig" Datatype="Bool" />
+    <Member Name="OscRevTorqLim_SlewDec" Datatype="&quot;SlewDec&quot;">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="OscRevTorqLim_SlewInc" Datatype="&quot;SlewInc&quot;">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="OscRevFast_SlewInc" Datatype="&quot;SlewInc&quot;">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="OscRevSlow_SlewInc" Datatype="&quot;SlewInc&quot;">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="OscRevSlow_SlewDec" Datatype="&quot;SlewDec&quot;">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="OscRevFast_SlewDec" Datatype="&quot;SlewDec&quot;">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="HomeFwdTrig" Datatype="Bool" />
+    <Member Name="HomeFwdTorqLim" Datatype="Bool" />
+    <Member Name="HomeFwdTorqLimTrig" Datatype="Bool" />
+    <Member Name="HomeFwdTorqLim_SlewDec" Datatype="&quot;SlewDec&quot;">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="HomeFWDTorqLim_TON" Datatype="TON_TIME" Version="1.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="HomeFwdTorqLim_SlewInc" Datatype="&quot;SlewInc&quot;">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="HomeFWDFast_SlewInc" Datatype="&quot;SlewInc&quot;">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="HomeFWDSlow_SlewInc" Datatype="&quot;SlewInc&quot;">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="HomeFWDSlow_SlewDec" Datatype="&quot;SlewDec&quot;">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="HomeFWDFast_SlewDec" Datatype="&quot;SlewDec&quot;">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="HomeRevTrig" Datatype="Bool" />
+    <Member Name="HomeRevTorqLim_TON" Datatype="TON_TIME" Version="1.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="HomeRevTorqLim" Datatype="Bool" />
+    <Member Name="HomeRevTorqLimTrig" Datatype="Bool" />
+    <Member Name="HomeRevTorqLim_SlewDec" Datatype="&quot;SlewDec&quot;">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="HomeRevTorqLim_SlewInc" Datatype="&quot;SlewInc&quot;">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="HomeRevFast_SlewInc" Datatype="&quot;SlewInc&quot;">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="HomeRevSlow_SlewInc" Datatype="&quot;SlewInc&quot;">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="HomeRevSlow_SlewDec" Datatype="&quot;SlewDec&quot;">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="HomeRevFast_SlewDec" Datatype="&quot;SlewDec&quot;">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="OscHomeLowAbsDeg" Datatype="Real" />
+    <Member Name="OscHomeLow2AbsDeg" Datatype="Real" />
+    <Member Name="OscHomeHighAbsDeg" Datatype="Real" />
+    <Member Name="OscHomeHigh2AbsDeg" Datatype="Real" />
+  </Section>
+</Sections></Interface>
+      <Name>Oscilate_DB</Name>
+      <Namespace />
+      <Number>34</Number>
+      <ProgrammingLanguage>DB</ProgrammingLanguage>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="3" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.InstanceDB>
+</Document>

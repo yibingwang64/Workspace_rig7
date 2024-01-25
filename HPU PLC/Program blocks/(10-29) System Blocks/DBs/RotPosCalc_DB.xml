@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V18" />
+  <SW.Blocks.InstanceDB ID="0">
+    <AttributeList>
+      <AutoNumber>false</AutoNumber>
+      <InstanceOfName>Rot_Pos_Calc</InstanceOfName>
+      <InstanceOfType>FB</InstanceOfType>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Input">
+    <Member Name="PulsesPerRev" Datatype="Int" />
+    <Member Name="Counts" Datatype="DInt" />
+    <Member Name="UL_OF" Datatype="Bool" />
+    <Member Name="LL_OF" Datatype="Bool" />
+    <Member Name="StoppedTime" Datatype="Time" />
+    <Member Name="RolloverValue" Datatype="LReal" />
+  </Section>
+  <Section Name="Output">
+    <Member Name="RotPosAbsDeg" Datatype="Real" />
+    <Member Name="RotPosRelDeg" Datatype="Real" />
+    <Member Name="RotTurns" Datatype="Real" />
+    <Member Name="Stopped" Datatype="Bool" />
+    <Member Name="DirFwd" Datatype="Bool" />
+    <Member Name="DirRev" Datatype="Bool" />
+    <Member Name="DegPerCount" Datatype="Real" />
+  </Section>
+  <Section Name="InOut">
+    <Member Name="ZeroPos" Datatype="Bool" />
+    <Member Name="LDSlot0_1" Datatype="Byte" />
+    <Member Name="Slot0" Datatype="Real" />
+    <Member Name="Slot1" Datatype="Real" />
+  </Section>
+  <Section Name="Static">
+    <Member Name="PosAbsDegLReal" Datatype="LReal" />
+    <Member Name="Static_1" Datatype="Real" />
+    <Member Name="LastEncCount" Datatype="DInt" />
+    <Member Name="Stopped_TON" Datatype="TON_TIME" Version="1.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+  </Section>
+</Sections></Interface>
+      <Name>RotPosCalc_DB</Name>
+      <Namespace />
+      <Number>11</Number>
+      <ProgrammingLanguage>DB</ProgrammingLanguage>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="3" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.InstanceDB>
+</Document>

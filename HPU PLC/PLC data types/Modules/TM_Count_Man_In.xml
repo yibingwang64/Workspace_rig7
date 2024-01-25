@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V18" />
+  <SW.Types.PlcStruct ID="0">
+    <AttributeList>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="None">
+    <Member Name="COUNT_VALUE" Datatype="DInt" />
+    <Member Name="CAPTURED_VALUE" Datatype="DInt" />
+    <Member Name="MEASURED_VALUE" Datatype="DInt" />
+    <Member Name="POWER_ERROR" Datatype="Bool" />
+    <Member Name="ENC_ERROR" Datatype="Bool" />
+    <Member Name="LD_ERROR" Datatype="Bool" />
+    <Member Name="Reserved1" Datatype="Bool" />
+    <Member Name="Reserved2" Datatype="Bool" />
+    <Member Name="Reserved3" Datatype="Bool" />
+    <Member Name="Reserved4" Datatype="Bool" />
+    <Member Name="Reserved5" Datatype="Bool" />
+    <Member Name="Reserved6" Datatype="Bool" />
+    <Member Name="RES_EVENT_ACK" Datatype="Bool" />
+    <Member Name="LD_STS_SLOT0" Datatype="Bool" />
+    <Member Name="LD_STS_SLOT1" Datatype="Bool" />
+    <Member Name="STS_READY" Datatype="Bool" />
+    <Member Name="STS_SW_GATE" Datatype="Bool" />
+    <Member Name="Reserved7" Datatype="Bool" />
+    <Member Name="Reserved8" Datatype="Bool" />
+    <Member Name="STS_DIR" Datatype="Bool" />
+    <Member Name="STS_CNT" Datatype="Bool" />
+    <Member Name="STS_GATE" Datatype="Bool" />
+    <Member Name="STS_DQ0" Datatype="Bool" />
+    <Member Name="STS_DQ1" Datatype="Bool" />
+    <Member Name="STS_DI0" Datatype="Bool" />
+    <Member Name="STS_DI1" Datatype="Bool" />
+    <Member Name="STS_DI2" Datatype="Bool" />
+    <Member Name="EVENT_ZERO" Datatype="Bool" />
+    <Member Name="EVENT_UFLW" Datatype="Bool" />
+    <Member Name="EVENT_OFLW" Datatype="Bool" />
+    <Member Name="EVENT_CMP0" Datatype="Bool" />
+    <Member Name="EVENT_CMP1" Datatype="Bool" />
+    <Member Name="EVENT_SYNC" Datatype="Bool" />
+    <Member Name="EVENT_CAP" Datatype="Bool" />
+    <Member Name="STS_M_INTERVAL" Datatype="Bool" />
+  </Section>
+</Sections></Interface>
+      <Name>TM_Count_Man_In</Name>
+      <Namespace />
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="3" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Types.PlcStruct>
+</Document>

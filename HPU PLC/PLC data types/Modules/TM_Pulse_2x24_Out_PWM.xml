@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V18" />
+  <SW.Types.PlcStruct ID="0">
+    <AttributeList>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="None">
+    <Member Name="OUTPUT_VALUE" Datatype="UDInt">
+      <Comment>
+        <MultiLanguageText Lang="en-US">Pulse Duration</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="SLOT" Datatype="UDInt">
+      <Comment>
+        <MultiLanguageText Lang="en-US">Load Value</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="LD_SLOT_Bit0" Datatype="Bool" />
+    <Member Name="LD_SLOT_Bit1" Datatype="Bool" />
+    <Member Name="LD_SLOT_Bit2" Datatype="Bool" />
+    <Member Name="LD_SLOT_Bit3" Datatype="Bool" />
+    <Member Name="MODE_SLOT" Datatype="Bool" />
+    <Member Name="Reserved1" Datatype="Bool" />
+    <Member Name="Reserved2" Datatype="Bool" />
+    <Member Name="Reserved3" Datatype="Bool" />
+    <Member Name="SW_ENABLE" Datatype="Bool" />
+    <Member Name="TM_CTRL_DQ" Datatype="Bool" />
+    <Member Name="Reserved4" Datatype="Bool" />
+    <Member Name="SET_DQA" Datatype="Bool" />
+    <Member Name="SET_DQB" Datatype="Bool" />
+    <Member Name="DITHER" Datatype="Bool" />
+    <Member Name="Rerserved6" Datatype="Bool" />
+    <Member Name="Rerserved7" Datatype="Bool" />
+    <Member Name="RES_ERROR" Datatype="Bool" />
+    <Member Name="Reserved8" Datatype="Bool" />
+    <Member Name="Reserved9" Datatype="Bool" />
+    <Member Name="Reserved10" Datatype="Bool" />
+    <Member Name="Reserved11" Datatype="Bool" />
+    <Member Name="Reserved12" Datatype="Bool" />
+    <Member Name="Reserved13" Datatype="Bool" />
+    <Member Name="Reserved14" Datatype="Bool" />
+    <Member Name="Rerserved" Datatype="Byte" />
+  </Section>
+</Sections></Interface>
+      <Name>TM_Pulse_2x24_Out_PWM</Name>
+      <Namespace />
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="3" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Types.PlcStruct>
+</Document>

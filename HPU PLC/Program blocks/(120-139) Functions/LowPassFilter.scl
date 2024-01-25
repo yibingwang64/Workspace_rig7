@@ -1,0 +1,43 @@
+﻿FUNCTION_BLOCK "LowPassFilter"
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT 
+      InputSignal : Real;
+      Alpha : Real;
+   END_VAR
+
+   VAR_OUTPUT 
+      FilteredSignal : Real;
+   END_VAR
+
+   VAR 
+      LastValue : Real;
+      AlphaInt : Real;   // Internal Alpha within scaling range
+   END_VAR
+
+
+BEGIN
+	(* #LowPassFilter Written BY Kristopher Gimenez January 23,2023
+	This block is used to as a First Order Low Pass Filter  (same as Exponentially Weighted Moving Average Filter)
+	
+	Alpha  must be >= 0 and < 1
+	
+	set Alpha to 0.0 for no filtering
+	
+	FilteredSignal = alpha*lastFiltered +(1-Alpha) * Signal
+	*)
+	
+	IF #Alpha < 0.0 THEN
+	    #AlphaInt := 0;
+	ELSIF #Alpha > 1.0 THEN
+	    #AlphaInt := 1.0;
+	ELSE
+	    #AlphaInt := #Alpha;
+	END_IF;
+	
+	#FilteredSignal := #AlphaInt * #LastValue +(1-#AlphaInt) * #InputSignal;
+	#LastValue := #FilteredSignal;
+	
+	
+END_FUNCTION_BLOCK
+

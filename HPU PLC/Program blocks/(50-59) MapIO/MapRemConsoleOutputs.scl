@@ -1,0 +1,50 @@
+﻿FUNCTION "MapRemConsoleOutputs" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+
+BEGIN
+	(* #MapConsoleOutputs Written BY Kristopher Gimenez January 23,2023
+	This block is will map the output variables and convert raw signals into measured values
+	*)
+	
+	
+	
+	//Slot 4 16x Digital Outputs
+	"RemConsole_Out".PTOLED:="PTOLED";
+	"RemConsole_Out".HPUFaultLED := "HPUFaultLED";
+	"RemConsole_Out".TDFaultLED := "TDFlushFaultLED";
+	"RemConsole_Out".BUWClLED := "BUWClLED";
+	"RemConsole_Out".TDEnLED := "TDEnLED";
+	"RemConsole_Out".MSVClLED := "MSVClLED";
+	"RemConsole_Out".QuillLockedLED:= "QuillLockLED";
+	"RemConsole_Out".ElevClLED:= "ElevClLED";
+	"RemConsole_Out".Horn := "Horn";
+	"RemConsole_Out".MSVClInt:= "MSVClInt";
+	"RemConsole_Out".BUWClInt := "BUWClInt";
+	(*Spare Outputs
+	"Console_Out".Slot4.Ch12 := ;
+	"Console_Out".Slot4.Ch13 := ;
+	"Console_Out".Slot4.Ch14 := ;
+	"Console_Out".Slot4.Ch15 := ;
+	*)
+	
+	
+	
+	
+	//Slot 5 4 x AQ U/I
+	"AoUI_Scaling"(Measured:="DrillRecTorqFtLbs",
+	               Max:=40000.0,
+	               Min:=0,
+	               s7Raw=>"DrillRecTorqRaw",
+	               mAOutput=>"DrillRecTorqmA"); //4-20ma = 0-40 000 ft-lbs
+	"AoUI_Scaling"(Measured:="DrillRecRPM",
+	               Max:=200.0,
+	               Min:=0,
+	               s7Raw=>"DrillRecRPMRaw",
+	               mAOutput=>"DrillRecRPMmA");// 4-20ma = 0-200 RPM
+	
+	
+	"RemConsole_Out".DrillRecTorq := "DrillRecTorqRaw";
+	"RemConsole_Out".DrillRecRPM := "DrillRecRPMRaw";
+END_FUNCTION
+

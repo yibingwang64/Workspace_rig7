@@ -1,0 +1,120 @@
+﻿FUNCTION "MapHPUOutputs" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+
+BEGIN
+	(* #MapHPUOutputs Written BY Kristopher Gimenez January 19,2023
+	This block is will map the input variables and convert raw signals into measured values
+	*)
+	//HPU Slot2 TM Count Encoder Outputs
+	"HPU_Out".Slot2.SW_GATE := "SwitchSWGATE"; //Enable the counter
+	"HPU_Out".Slot2.SET_DIR:= "RotaryEncInvDir";
+	"HPU_Out".Slot2.SLOT_0 := "RotEncSlot0";
+	"HPU_Out".Slot2.SLOT_1 := "RotEncSlot1";
+	"HPU_Out".Slot2.LD_SLOT_0_1 := "RotEncLDSlot";//assign loading bytes
+	"HPU_Out".Slot2.RES_EVENT := "RotEncPosReset";//reset event flags if position is being res
+	
+	
+	//Slot 7 TM Pulse
+	//Channel 0 TD P1 Fwd
+	"TDFwdPress1Raw" := "AoP_mA2Raw_2A"("TDFwdPress1mA");
+	"HPU_Out".Slot7.Ch0.OUTPUT_VALUE := "TDFwdPress1Raw";//assign output value
+	"HPU_Out".Slot7.Ch0.SW_ENABLE :="TDFwdPress1En"; //used to enabled output
+	"HPU_Out".Slot7.Ch0.DITHER := "TDFwdPress1En"; //enable Dither - Currently enabling with the output. 
+	"HPU_Out".Slot7.Ch0.TM_CTRL_DQ :=1;//enable technology control of outputs 
+	//Channel 1 TD P1 Rev
+	"TDRevPress1Raw" := "AoP_mA2Raw_2A"("TDRevPress1mA");
+	"HPU_Out".Slot7.Ch1.OUTPUT_VALUE := "TDRevPress1Raw";//assign output value
+	"HPU_Out".Slot7.Ch1.SW_ENABLE := "TDRevPress1En"; //used to enabled output
+	"HPU_Out".Slot7.Ch1.DITHER := "TDRevPress1En"; //enable Dither - Currently enabling with the output. 
+	"HPU_Out".Slot7.Ch1.TM_CTRL_DQ := 1;//enable technology control of outputs 
+	
+	
+	
+	//Slot 8 TM Pulse
+	//Channel 0 TD P2 FWD
+	"TDFwdPress2Raw" := "AoP_mA2Raw_2A"("TDFwdPress2mA");
+	"HPU_Out".Slot8.Ch0.OUTPUT_VALUE := "TDFwdPress2Raw";//assign output value
+	"HPU_Out".Slot8.Ch0.SW_ENABLE := "TDFwdPress2En"; //used to enabled output
+	"HPU_Out".Slot8.Ch0.DITHER := "TDFwdPress2En"; //enable Dither - Currently enabling with the output. 
+	"HPU_Out".Slot8.Ch0.TM_CTRL_DQ := 1;//enable technology control of outputs 
+	
+	//Channel 1 TD P2 Rev
+	"TDRevPress2Raw" := "AoP_mA2Raw_2A"("TDRevPress2mA");
+	"HPU_Out".Slot8.Ch1.OUTPUT_VALUE := "TDRevPress2Raw";//assign output value
+	"HPU_Out".Slot8.Ch1.SW_ENABLE := "TDRevPress2En"; //used to enabled output
+	"HPU_Out".Slot8.Ch1.DITHER := "TDRevPress2En"; //enable Dither - Currently enabling with the output. 
+	"HPU_Out".Slot8.Ch1.TM_CTRL_DQ := 1;//enable technology control of outputs 
+	
+	
+	//Slot 9 TM Pulse
+	//Channel 0 TD Torq
+	"TDTorqPressRaw" := "AoP_mA2Raw_2A"("TDTorqPressmA");
+	"HPU_Out".Slot9.Ch0.OUTPUT_VALUE := "TDTorqPressRaw";//assign output value
+	"HPU_Out".Slot9.Ch0.SW_ENABLE := "TDTorqPressEn"; //used to enabled output
+	"HPU_Out".Slot9.Ch0.DITHER := "TDTorqPressEn"; //enable Dither - Currently enabling with the output. 
+	"HPU_Out".Slot9.Ch0.TM_CTRL_DQ := 1;//enable technology control of outputs 
+	//Slot 9 TM Pulse
+	//Channel 1 TD P1 Rev
+	//"TDRevPress1Raw" := "AoP_mA2Raw_2A"("TDRevPress1mA");
+	//"HPU_Out".Slot9.Ch1.OUTPUT_VALUE := "TDRevPress1Raw";//assign output value
+	//"HPU_Out".Slot9.Ch1.SW_ENABLE := "TDRevPress1En"; //used to enabled output
+	//"HPU_Out".Slot9.Ch1.DITHER := "TDRevPress1En"; //enable Dither - Currently enabling with the output. 
+	//"HPU_Out".Slot9.Ch1.TM_CTRL_DQ := 1;//enable technology control of outputs 
+	
+	//Slot 10 DO Relay x 4
+	"HPU_Out".Slot10.Ch0 := "M1Start";
+	"HPU_Out".Slot10.Ch1 := "M2Start";
+	"HPU_Out".Slot10.Ch2 := "CoolingFanStart";
+	"HPU_Out".Slot10.Ch3 := "AuxPumpStart";
+	
+	//Slot 11 DO Relay x 4
+	"HPU_Out".Slot11.Ch0 := "LinkExtSol";
+	"HPU_Out".Slot11.Ch1 := "LinkRetSol";
+	"HPU_Out".Slot11.Ch2 := "LinkFloatSol";
+	//"HPU_Out".Slot11.Ch3 := ;Spare
+	
+	
+	//Slot 12 DO Relay x 4
+	"HPU_Out".Slot12.Ch0 := "BUWClSol";
+	"HPU_Out".Slot12.Ch1 := "BUWDnSol";
+	"HPU_Out".Slot12.Ch2 := "BUWUpSol";
+	"HPU_Out".Slot12.Ch3 := "BUWOpSol";
+	
+	
+	//Slot 13 DO Relay x 4
+	"HPU_Out".Slot13.Ch0 := "LSHT_Sol";
+	"HPU_Out".Slot13.Ch1 := "HSLT_Sol";
+	"HPU_Out".Slot13.Ch2 := "ElevClSol";
+	"HPU_Out".Slot13.Ch3 := "ElevOpSol";
+	
+	
+	//Slot 14 DO Relay x 4
+	"HPU_Out".Slot14.Ch0 := "HandlerFWDSol";
+	"HPU_Out".Slot14.Ch1 := "HandlerREVSol";
+	"HPU_Out".Slot14.Ch2 := "MSVOpSol";
+	"HPU_Out".Slot14.Ch3 := "MSVClSol";
+	
+	
+	//Slot 15 DO Relay x 4
+	"HPU_Out".Slot15.Ch0 := "HourMeterOn";
+	"HPU_Out".Slot15.Ch1 := "FailSafeEnSol";
+	"HPU_Out".Slot15.Ch2 := "AuxUnloaderSol";
+	"HPU_Out".Slot15.Ch3 := "BypassValveSol";
+	
+	
+	//Slot 16 DO Relay x 4
+	"HPU_Out".Slot16.Ch0 := "TDExtSol";
+	"HPU_Out".Slot16.Ch1 := "TDRetSol";
+	"HPU_Out".Slot16.Ch2 := "HotOilControlSol";
+	"HPU_Out".Slot16.Ch3 := "BOControlSol";
+	
+	//Slot 17 DO Relay x 4
+	(*Spare Outputs
+	"HPU_Out".Slot17.Ch0 := ;
+	"HPU_Out".Slot17.Ch1 := ;
+	"HPU_Out".Slot18.Ch2 := ;
+	"HPU_Out".Slot18.Ch3 := ;
+	*)
+END_FUNCTION
+

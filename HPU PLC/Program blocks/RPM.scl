@@ -1,0 +1,26 @@
+﻿ORGANIZATION_BLOCK "RPM"
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_TEMP 
+      CalcSpeedRPM : Real;
+      Count_Per_Sec : Real;
+   END_VAR
+
+
+BEGIN
+	#CalcSpeedRPM := ABS(DINT_TO_REAL("RotaryCounts" - "LastCount"));
+	"LastCount" := "RotaryCounts";
+	#Count_Per_Sec := INT_TO_REAL("Settings".RotEncPPR);
+	IF "RotaryRPM" > 100 THEN
+	    #CalcSpeedRPM := 1.0 * #CalcSpeedRPM / #Count_Per_Sec * 60.0 / 1.0;
+	ELSIF "RotaryRPM" > 55.0 THEN
+	    #CalcSpeedRPM := 1.0 * #CalcSpeedRPM / #Count_Per_Sec * 60.0 / 1.0;
+	ELSE
+	    #CalcSpeedRPM := 1.0 * #CalcSpeedRPM / #Count_Per_Sec * 60.0 / 1.0;
+	END_IF;
+	"RotaryRPMActual" := ABS(#CalcSpeedRPM);
+	"LowPassFilter_DB"(InputSignal := ABS(#CalcSpeedRPM),
+	                   Alpha := 0.7,
+	                   FilteredSignal => "RotaryRPM");
+END_ORGANIZATION_BLOCK
+

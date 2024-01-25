@@ -1,0 +1,19 @@
+﻿FUNCTION "AoP_mA2Raw_2A" : UDInt
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT 
+      Realnput : Real;
+   END_VAR
+
+
+BEGIN
+	(* #AoP_ma2Raw_2A Written BY Kristopher Gimenez January 23,2023
+	This block is used to convert a mA signal  output signal to a Raw. Note 0-2A = 27648 pulse output.
+	*)
+	
+	
+	#AoP_mA2Raw_2A := REAL_TO_UDINT(#Realnput/2000* 27648.0);
+	
+	
+END_FUNCTION
+

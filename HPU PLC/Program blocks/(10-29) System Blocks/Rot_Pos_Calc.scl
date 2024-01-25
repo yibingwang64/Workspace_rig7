@@ -1,0 +1,143 @@
+﻿FUNCTION_BLOCK "Rot_Pos_Calc"
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT 
+      PulsesPerRev : Int;   // Encoder pulses per revolutions. 
+      Counts : DInt;   // Encoder counts
+      UL_OF : Bool;   // Counter Upper Limit Overflow
+      LL_OF : Bool;   // Counter Lower Limit Over Flow
+      StoppedTime : Time := T#2s;   // Time without a encoder feedback to says system is stopped/not moving
+      RolloverValue : LReal;
+   END_VAR
+
+   VAR_OUTPUT 
+      RotPosAbsDeg : Real;
+      RotPosRelDeg : Real := 0.0;
+      RotTurns : Real;
+      Stopped : Bool;
+      DirFwd : Bool;
+      DirRev : Bool;
+      DegPerCount : Real;
+   END_VAR
+
+   VAR_IN_OUT 
+      ZeroPos : Bool;   // Used to Reset Position to zero. Flag will reset to zero once position is zero
+      LDSlot0_1 : Byte;   // Upper 4 Bits LD SLot 1 and lower 4 BITS to load Slot0 
+      Slot0 : Real;
+      Slot1 : Real;
+   END_VAR
+
+   VAR 
+      PosAbsDegLReal : LReal := 0.0;
+      Static_1 : Real;
+      LastEncCount : DInt;
+      Stopped_TON {InstructionName := 'TON_TIME'; LibVersion := '1.0'} : TON_TIME;
+   END_VAR
+
+   VAR_TEMP 
+      PulsesPerRevAdj : Int;
+   END_VAR
+
+
+BEGIN
+	(* #RotPosCalc Written BY Kristopher Gimenez January 23,2023
+	This block is used to to calculate actual rotary position, stopped status and direction of the rotary position.
+	Note that position is always counted from 0 as counter is reset when zero position selected.
+	*)
+	
+	
+	//Encoder rotary position
+	// 2*PPR = counts per Rev = 360. Counter rollover at 2147483647 to - 2147483647
+	IF "HMI_DB".OscTurnFwd <= 1 OR "HMI_DB".OscTurnRev <= 1 THEN
+	    #PulsesPerRevAdj := 22;
+	ELSIF "HMI_DB".OscTurnFwd <= 2 OR "HMI_DB".OscTurnRev <= 2 THEN
+	    #PulsesPerRevAdj := 22;
+	ELSIF "HMI_DB".OscTurnFwd <= 3 OR "HMI_DB".OscTurnRev <= 3 THEN
+	    #PulsesPerRevAdj := 22;
+	ELSIF "HMI_DB".OscTurnFwd <= 4 OR "HMI_DB".OscTurnRev <= 4 THEN
+	    #PulsesPerRevAdj := 22;
+	ELSE
+	    #PulsesPerRevAdj := 22;
+	END_IF;
+	
+	#Static_1 := 360.0/INT_TO_REAL(#PulsesPerRevAdj) ;
+	#DegPerCount := #Static_1;
+	
+	IF #UL_OF THEN //if overflow over the top limit, count from neg limit and add upper range
+	    #PosAbsDegLReal := DINT_TO_LREAL(LREAL_TO_DINT(-#RolloverValue) - #Counts)*#Static_1 + LREAL_TO_DINT(#RolloverValue * #Static_1);
+	ELSIF #LL_OF THEN //if overflow over the bottom limit, count from pos limit and add lower range
+	    #PosAbsDegLReal := DINT_TO_LREAL(LREAL_TO_DINT(#RolloverValue) - #Counts)*#Static_1  + LREAL_TO_DINT(#RolloverValue* #Static_1);
+	ELSE //no overflow 15deg/count
+	    #PosAbsDegLReal := DINT_TO_LREAL(#Counts) * #Static_1;
+	END_IF;
+	
+	#RotPosAbsDeg := LREAL_TO_REAL(#PosAbsDegLReal);
+	#RotPosRelDeg := DINT_TO_REAL(LREAL_TO_DINT(#PosAbsDegLReal) MOD 360);
+	#RotTurns := LREAL_TO_REAL(#PosAbsDegLReal/360.0);
+	
+	
+	//Use this load request to specify the meaning of the value in SLOT_m:
+	(*
+	• 0000B means: No action, idle
+	• 0001B means: Load counter value
+	• 0010B not permitted
+	• 0011B means: Load start value
+	• 0100B means: Load comparison value 0
+	• 0101B means: Load comparison value 1
+	• 0110B means: Load counting low limit
+	• 0111B means: Load counting high limit*)
+	
+	IF #ZeroPos AND (#Counts <> 0) THEN //if zero request received and position is not zero.
+	    #Slot0 := 0; // set value to load to zero
+	    #LDSlot0_1 := 1; //load slot 0.
+	    "SwitchSWGATE" := 0;
+	ELSIF #ZeroPos AND (#Counts = 0) THEN //position has been reset. Reset load variable and position reset
+	    #LDSlot0_1 := 0;//don't load anything
+	    #ZeroPos := 0;
+	    "SwitchSWGATE" := 1;
+	ELSE //reset slot load
+	    #LDSlot0_1 := 0;//don't load anything
+	    "SwitchSWGATE" := 1;
+	END_IF;
+	
+	//IF counts = last counts for set time. Movement stopped. 
+	
+	#Stopped_TON(IN:=(#Counts=#LastEncCount),
+	             PT:=#StoppedTime,
+	             Q => #Stopped);
+	
+	IF #Stopped THEN
+	    #DirFwd := 0;
+	    #DirRev := 0;
+	    "RotaryStopped" := 1;
+	ELSIF #Counts < #LastEncCount THEN
+	    #DirFwd := 0;
+	    #DirRev := 1;
+	    "RotaryStopped" := 0;
+	ELSIF #Counts > #LastEncCount THEN
+	    #DirFwd := 1;
+	    #DirRev := 0;
+	    "RotaryStopped" := 0;
+	END_IF;
+	
+	IF #RotPosRelDeg >= 0 THEN
+	    "RotRelPosDegHMIPos" := #RotPosRelDeg;
+	ELSE
+	    "RotRelPosDegHMIPos" := 360.0 + #RotPosRelDeg;
+	END_IF;
+	
+	IF "HMI_DB".OscHomeRelDeg >= 0 THEN
+	    "OscHomeRelDegHMIPos" := "HMI_DB".OscHomeRelDeg;
+	ELSE
+	    "OscHomeRelDegHMIPos" := 360.0 + "HMI_DB".OscHomeRelDeg;
+	END_IF;
+	
+	
+	    "RotaryRPMHMI" := ABS ("RotaryRPM");
+	    #LastEncCount := #Counts;
+	
+	
+	
+	
+END_FUNCTION_BLOCK
+

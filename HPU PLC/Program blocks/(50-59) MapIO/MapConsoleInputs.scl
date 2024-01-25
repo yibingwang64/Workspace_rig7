@@ -1,0 +1,68 @@
+﻿FUNCTION "MapConsoleInputs" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+
+BEGIN
+	(* #MapHPUConsoleInputs Written BY Kristopher Gimenez January 19,2023
+	This block is will map the input variables for the console dependant on whether a third part connection is made. It will also convert raw signals into measured values for the console inputs. 
+	*)
+	
+	(*
+	//To be Added Here
+	If Remote Console connect heartbeat OK, Remote Enable is On and Local Console Off use remote console values. 
+	*)
+	
+	//Slot 1 16 x DI
+	"LinkRetSw" := "Console_In".Slot1.Ch0;
+	"TDAuxSw":= "Console_In".Slot1.Ch1;
+	"LinkExtSw":= "Console_In".Slot1.Ch2;
+	"TDEnSW":= "Console_In".Slot1.Ch3;
+	"HSLT_Sw":= "Console_In".Slot1.Ch4;
+	"HandlerFwdSw":= "Console_In".Slot1.Ch5;
+	"HandlerRevSw":= "Console_In".Slot1.Ch6;
+	"MPNotRunning" := NOT "Console_In".Slot1.Ch7;//
+	"QuillLockSw":= "Console_In".Slot1.Ch8;
+	"BUWClSw":= "Console_In".Slot1.Ch9;
+	"BUWDnSw":= "Console_In".Slot1.Ch10;
+	"BUWUpSw":= "Console_In".Slot1.Ch11;
+	"TDModeMUSpinSw":= "Console_In".Slot1.Ch12;
+	"TDModeMUTorqSw":= "Console_In".Slot1.Ch13;
+	"TDModeDrillRevSw":= "Console_In".Slot1.Ch14;
+	"TDModeBreakOutSw":= "Console_In".Slot1.Ch15;
+	
+	//Slot 2 16 x DI
+	"ElevOpSw" := "Console_In".Slot2.Ch0;
+	"TDExtSw" := "Console_In".Slot2.Ch1;
+	"ElevClSw" := "Console_In".Slot2.Ch2;
+	"TDRetSw":= "Console_In".Slot2.Ch3;
+	"PTO_Sw" := "Console_In".Slot2.Ch4;
+	"PurgePressureSw":= "Console_In".Slot2.Ch5;
+	"MSVClSw":= "Console_In".Slot2.Ch6;
+	"MSVAutoSw" := "Console_In".Slot2.Ch7;
+	"MSVOpSw" := "Console_In".Slot2.Ch8;
+	"LinkFloatSw":= "Console_In".Slot2.Ch9;
+	
+	//Slot 3 AI 8 xU
+	"MUTorqPotRaw" := "Console_In".Slot3.Ch0;
+	"MUTorqPotV" := "AiV_Raw2V"("MUTorqPotRaw");
+	"DrillTorqPotRaw" := "Console_In".Slot3.Ch1;
+	"DrillTorqPotV" := "AiV_Raw2V"("DrillTorqPotRaw");
+	"DrillThrottlePotRaw" := "Console_In".Slot3.Ch2;
+	"DrillThrottlePotV" := "AiV_Raw2V"("DrillThrottlePotRaw");
+	"Con_AiV3SpareRaw" :=  "Console_In".Slot3.Ch3;
+	"Con_AiV3SpareV" := "AiV_Raw2V"("Con_AiV3SpareRaw");
+	"Con_AiV4SpareRaw" :=  "Console_In".Slot3.Ch4;
+	"Con_AiV4SpareV" := "AiV_Raw2V"("Con_AiV4SpareRaw");
+	"Con_AiV5SpareRaw" :=  "Console_In".Slot3.Ch5;
+	"Con_AiV5SpareV" := "AiV_Raw2V"("Con_AiV5SpareRaw");
+	"Con_AiV6SpareRaw" :=  "Console_In".Slot3.Ch6;
+	"Con_AiV6SpareV" := "AiV_Raw2V"("Con_AiV6SpareRaw");
+	"Con_AiV7SpareRaw" :=  "Console_In".Slot3.Ch7;
+	"Con_AiV7SpareV" := "AiV_Raw2V"("Con_AiV7SpareRaw");
+	
+	
+	
+	
+	
+END_FUNCTION
+

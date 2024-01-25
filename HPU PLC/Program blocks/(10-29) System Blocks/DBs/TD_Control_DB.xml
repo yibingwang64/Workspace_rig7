@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V18" />
+  <SW.Blocks.InstanceDB ID="0">
+    <AttributeList>
+      <AutoNumber>false</AutoNumber>
+      <InstanceOfName>TD_Control</InstanceOfName>
+      <InstanceOfType>FB</InstanceOfType>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Input" />
+  <Section Name="Output" />
+  <Section Name="InOut" />
+  <Section Name="Static">
+    <Member Name="AllowShift" Datatype="Bool" />
+    <Member Name="TD_Mode" Datatype="Int" />
+    <Member Name="HSLTShift_TP" Datatype="TP_TIME" Version="1.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="LSHTShift_TP" Datatype="TP_TIME" Version="1.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="MUSpinComplete" Datatype="Bool" />
+    <Member Name="TDP1FwdSetmA" Datatype="Real" />
+    <Member Name="TDP2FwdSetmA" Datatype="Real" />
+    <Member Name="TDP1RevSetmA" Datatype="Real" />
+    <Member Name="TDP2RevSetmA" Datatype="Real" />
+    <Member Name="TorqSetmA" Datatype="Real" />
+    <Member Name="TDP1FwdEn" Datatype="Bool" />
+    <Member Name="TDP2FwdEn" Datatype="Bool" />
+    <Member Name="TDP1RevEn" Datatype="Bool" />
+    <Member Name="TDP2RevEn" Datatype="Bool" />
+    <Member Name="TorqEn" Datatype="Bool" />
+    <Member Name="BypassDelay_TON" Datatype="TON_TIME" Version="1.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="BypassRunning_TOF" Datatype="TOF_TIME" Version="1.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="HSLT_Sol_Last" Datatype="Bool">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="LSHT_Sol_Last" Datatype="Bool" />
+    <Member Name="AllowRev" Datatype="Bool" />
+    <Member Name="SpeedLimiting" Datatype="Bool" />
+    <Member Name="SpeedLimitmAOut" Datatype="Real" />
+    <Member Name="SpeedLimitingTrig" Datatype="Bool" />
+    <Member Name="MUTorqStart" Datatype="Bool" />
+    <Member Name="BOStart" Datatype="Bool" />
+    <Member Name="OscStart" Datatype="Bool" />
+    <Member Name="MUTorqStart_Trig" Datatype="Bool" />
+    <Member Name="BOStart_Trig" Datatype="Bool" />
+    <Member Name="OscStart_Trig" Datatype="Bool" />
+    <Member Name="SpeedLimit_SlewDec" Datatype="&quot;SlewDec&quot;">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="SpeedLimit_SlewInc" Datatype="&quot;SlewInc&quot;">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="HiTempShutDown_TON" Datatype="TON_TIME" Version="1.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+  </Section>
+</Sections></Interface>
+      <Name>TD_Control_DB</Name>
+      <Namespace />
+      <Number>19</Number>
+      <ProgrammingLanguage>DB</ProgrammingLanguage>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="3" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.InstanceDB>
+</Document>

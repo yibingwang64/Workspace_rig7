@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V18" />
+  <SW.Types.PlcStruct ID="0">
+    <AttributeList>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="None">
+    <Member Name="Element_1" Datatype="Bool" />
+    <Member Name="Element_2" Datatype="Bool" />
+    <Member Name="Element_3" Datatype="Bool" />
+    <Member Name="Element_4" Datatype="Bool" />
+    <Member Name="Element_5" Datatype="Bool" />
+    <Member Name="Element_6" Datatype="Bool" />
+    <Member Name="Element_7" Datatype="Bool" />
+    <Member Name="LinkTiltRetr" Datatype="Bool" />
+    <Member Name="TopDriveAux" Datatype="Bool" />
+    <Member Name="LinkTiltExt" Datatype="Bool" />
+    <Member Name="TopDriveEn" Datatype="Bool" />
+    <Member Name="HSLTEn" Datatype="Bool" />
+    <Member Name="HandlerFwd" Datatype="Bool" />
+    <Member Name="HandlerRev" Datatype="Bool" />
+    <Member Name="MudPumpRunning" Datatype="Bool" />
+    <Member Name="QuillLock" Datatype="Bool" />
+    <Member Name="BUWClose" Datatype="Bool" />
+    <Member Name="BUWDown" Datatype="Bool" />
+    <Member Name="BUWUp" Datatype="Bool" />
+    <Member Name="TDModeMUSpin" Datatype="Bool" />
+    <Member Name="TDModeMUTorq" Datatype="Bool" />
+    <Member Name="TDModeRev" Datatype="Bool" />
+    <Member Name="TDModeBO" Datatype="Bool" />
+    <Member Name="ElevOp" Datatype="Bool" />
+    <Member Name="TDExt" Datatype="Bool" />
+    <Member Name="ElevCl" Datatype="Bool" />
+    <Member Name="TDRet" Datatype="Bool" />
+    <Member Name="PTO" Datatype="Bool" />
+    <Member Name="Spare" Datatype="Bool" />
+    <Member Name="MSVClose" Datatype="Bool" />
+    <Member Name="MSVAuto" Datatype="Bool" />
+    <Member Name="MSVOpen" Datatype="Bool" />
+    <Member Name="LinkTiltFloat" Datatype="Bool" />
+    <Member Name="Spare_1" Datatype="Bool" />
+    <Member Name="Spare_2" Datatype="Bool" />
+    <Member Name="Spare_3" Datatype="Bool" />
+    <Member Name="Spare_4" Datatype="Bool" />
+    <Member Name="Spare_5" Datatype="Bool" />
+    <Member Name="Heartbeat" Datatype="Bool" />
+    <Member Name="Reserved" Datatype="Byte" />
+    <Member Name="MUTorqLim" Datatype="Int" />
+    <Member Name="DrillTorqLim" Datatype="Int" />
+    <Member Name="DrillThrottle" Datatype="Int" />
+    <Member Name="SpareAI" Datatype="Int" />
+    <Member Name="SpareAI_1" Datatype="Int" />
+    <Member Name="SpareAI_2" Datatype="Int" />
+    <Member Name="SpareAI_3" Datatype="Int" />
+    <Member Name="SpareAI_1_1" Datatype="Int" />
+  </Section>
+</Sections></Interface>
+      <Name>RemConsole_IO_In</Name>
+      <Namespace />
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="3" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Types.PlcStruct>
+</Document>

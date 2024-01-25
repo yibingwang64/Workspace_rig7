@@ -1,0 +1,35 @@
+﻿FUNCTION "Pump_Output" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT 
+      Disable : Bool;   // Enable the Block to convert. Otherwise output set to min
+      InputValue : Real;
+      InMin : Real;
+      InMax : Real;
+      OutMin_mA : Real;
+      OutMax_mA : Real;
+   END_VAR
+
+   VAR_OUTPUT 
+      mAOut : Real;
+   END_VAR
+
+
+BEGIN
+	(* Pump_Output Written BY Kristopher Gimenez January 19,2023
+	This block will will convert and scale an input to output for the pump control
+	*)
+	
+	
+	
+	IF #InputValue <= #InMin OR #Disable THEN //if input less than min or not enabled set output to min
+	    #mAOut := #OutMin_mA;
+	ELSIF #InputValue >= #InMax THEN//if input greater than amx set output to max
+	    #mAOut := #OutMax_mA;
+	ELSE//else input in range so scale.
+	    #mAOut := ((#InputValue - #InMin) / (#InMax - #InMin) * (#OutMax_mA - #OutMin_mA)) + #OutMin_mA;
+	END_IF;
+	
+	
+END_FUNCTION
+

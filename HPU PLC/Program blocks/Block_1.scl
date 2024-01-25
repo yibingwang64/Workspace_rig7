@@ -1,0 +1,255 @@
+﻿FUNCTION_BLOCK "Block_1"
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT 
+      Input_1 : Bool;
+   END_VAR
+
+   VAR 
+      Test_Mode : Word;
+      "Counter" : Word := 0;
+      Delay_Timer {InstructionName := 'TON_TIME'; LibVersion := '1.0'} : TON_TIME;
+      TurnOnOffTimer { S7_SetPoint := 'True'} : Bool;
+   END_VAR
+
+   VAR_TEMP 
+      PTOLED : Bool;
+      HpuFaultLed : Bool;
+      BUWCLLED : Bool;
+      QuillLockLED : Bool;
+      TDEnableLed : Bool;
+      MSVClLED : Bool;
+      ElevatorCLLED : Bool;
+   END_VAR
+
+   VAR CONSTANT 
+      AuxByPassMode : Word := 2;
+      AuxByPassModeDone : Word := 3;
+      TDEnableMode : Word := 4;
+      TDEnableModeDone : Word := 5;
+      BUWAutoClHoldingMode : Word := 6;
+      BUWAutoClHoldingModeDone : Word := 7;
+      QuillLockMode : Word := 8;
+      QuillLockModeDone : Word := 9;
+      MudSaverOpenMode : Word := 10;
+      MudSaverCloseMode : Word := 11;
+      MudSaverAutoMode : Word := 12;
+      MudSaveModeDone : Word := 13;
+      ElevCloseMode : Word := 14;
+      ElevOpenMode : Word := 15;
+      "MudSaverPumpRuningMode-0" : Word := 16;
+      "MudSaverPumpRuningMode-1" : Word := 17;
+   END_VAR
+
+
+BEGIN
+	//#Test_Mode := #AuxByPassMode;
+	//#Test_Mode := #AuxByPassModeDone;
+	//#Test_Mode := #TDEnableMode;
+	//#Test_Mode := #BUWAutoClHoldingModeDone;
+	//#Test_Mode := #QuillLockMode;
+	//#Test_Mode := #QuillLockModeDone;
+	//#Test_Mode := #MudSaverCloseMode;
+	//#Test_Mode := #MudSaverOpenMode;
+	//#Test_Mode := #MudSaverAutoMode;
+	//#Test_Mode := #"MudSaverPumpRuningMode-0";  //close
+	//#Test_Mode := #"MudSaverPumpRuningMode-1"; //open
+	#Test_Mode := #ElevOpenMode;
+	//#Test_Mode := #ElevCloseMode;
+	IF #Test_Mode = #AuxByPassMode THEN  //AuxByPass Mode
+	    "Console_In".Slot1.Ch1 := 1; //TDAuxSw
+	    "Console_In".Slot1.Ch3 := 0; //TDEnableSw 
+	    "HPU_In".Slot3.Ch0 := 1; //AuxPumpRunning feedback
+	    "Console_In".Slot1.Ch8 := 1; //Quill lock,    //Control bit
+	    "Console_In".Slot2.Ch4 := 1;//PTO_sw, After PTO, BUW Closed //Control bit
+	END_IF;
+	IF #Test_Mode = #AuxByPassModeDone THEN
+	        
+	        "Console_In".Slot1.Ch8 := 0; //Quill lock,    //Control bit
+	        "Console_In".Slot2.Ch4 := 0;//PTO_sw, After PTO, BUW Closed //Control bit
+	        "Console_In".Slot1.Ch1 := 1; //TDAuxSw
+	        "Console_In".Slot1.Ch3 := 0; //TDEnableSw 
+	END_IF;
+	
+	//TD Enable, ready to run
+	IF #Test_Mode = #TDEnableMode OR #Test_Mode =#BUWAutoClHoldingMode OR #Test_Mode=#BUWAutoClHoldingModeDone OR #Test_Mode= #MudSaverCloseMode OR #Test_Mode=#MudSaverOpenMode OR #Test_Mode=#MudSaverAutoMode OR
+	    #Test_Mode=#QuillLockMode OR #Test_Mode=#QuillLockModeDone OR #Test_Mode = #"MudSaverPumpRuningMode-0" OR #Test_Mode=#"MudSaverPumpRuningMode-1"
+	    OR #Test_Mode= #ElevOpenMode OR #Test_Mode=#ElevCloseMode THEN
+	        "Console_In".Slot1.Ch1 := 0; //TDAuxSw
+	        "Console_In".Slot1.Ch3 := 1; //TDEnableSw
+	        "IO_Settings".ElevClSw := 0; //No Elevator
+	        "HPU_In".Slot4.Ch9 := 0; //"ElevClFeedback" := 0;  //No
+	        "Console_In".Slot2.Ch2 := 1; // "ElevClSw" := "Console_In".Slot2.Ch2;
+	        "Console_In".Slot2.Ch0 := 0;//"ElevOpSw" := "Console_In".Slot2.Ch0;/
+	    END_IF;
+	
+	    IF #Test_Mode = #BUWAutoClHoldingMode  THEN
+	        //BUW AutoClose Hold 
+	        //To Open BUW 
+	        //#Counter := 1;
+	        "Console_In".Slot1.Ch12 := 1; //"TDModeMUSpinSw" := "Console_In".Slot1.Ch12; this is key to hold
+	        "Console_In".Slot1.Ch13 := 0; //"TDModeMUTorqSw" := "Console_In".Slot1.Ch12;
+	        "Console_In".Slot1.Ch14 := 0; //"TDBOSw" := "Console_In".Slot1.Ch12;
+	        "Console_In".Slot1.Ch9 := 0; // BUWClSw, close
+	    //ELSIF #Counter =1 THEN
+	       // "Console_In".Slot1.Ch9 := 0; //"BUWClSw",open 
+	        //"Console_In".Slot1.Ch12 := 1; //"TDModeMUSpinSw" := "Console_In".Slot1.Ch12;
+	    END_IF;
+	    IF #Test_Mode = #BUWAutoClHoldingModeDone THEN
+	        "Console_In".Slot1.Ch12 := 0; //"TDModeMUSpinSw" := "Console_In".Slot1.Ch12;
+	        "Console_In".Slot1.Ch13 := 0; //"TDModeMUTorqSw" := "Console_In".Slot1.Ch12;
+	        "Console_In".Slot1.Ch14 := 0; //"TDBOSw" := "Console_In".Slot1.Ch12;
+	        "Console_In".Slot1.Ch9 := 0; // BUWClSw
+	    END_IF;
+	    
+	    IF #Test_Mode = #QuillLockMode THEN //Have to first do a fake MUTorq
+	        //QuillLock
+	//1. make sure MUCycleDone. 2. move BUWClSw on, 3. PTO on 4.  BUWClSw to QuillLockSw 
+	   
+	        "HPU_In".Slot6.Ch0 := 12345;//TD Pressure Fwd
+	        "HPU_In".Slot6.Ch1 := 12;//TD Pressure Rev
+	//1.  Init and BUWClSw on
+	         "Console_In".Slot2.Ch4 := 0;//PTO_sw
+	         "Console_In".Slot1.Ch13 := 0;//"TDModeMUTorqSw":= "Console_In".Slot1.Ch13; //Chang
+	         "Console_In".Slot1.Ch9 := 1; // BUWClSw       //change
+	         "Console_In".Slot1.Ch8 := 0; //Quill lock     //change
+	//2.         
+	        // "Console_In".Slot2.Ch4 := 1;//PTO_sw,  switch PTO to trigger
+	           
+	//3         
+	        // "Console_In".Slot1.Ch9 := 0; // BUWClSw       //change
+	        //  "Console_In".Slot1.Ch8 := 1; //Quill lock     //change
+	         
+	
+	        END_IF;
+	        IF #Test_Mode = #QuillLockModeDone THEN
+	            
+	            "Console_In".Slot1.Ch13 := 0;//"TDModeMUTorqSw":= "Console_In".Slot1.Ch13;
+	            "Console_In".Slot1.Ch14 := 0; //"TDModeDrillRevSw
+	            "Console_In".Slot1.Ch15 := 0; //"TDBOBeakOutSw" := "Console_In".Slot1.Ch15;
+	            "HPU_In".Slot6.Ch0 := 12345;//TD Pressure Fwd
+	            "HPU_In".Slot6.Ch1 := 12;//TD Pressure Rev
+	
+	            "Console_In".Slot2.Ch4 := 0;//PTO_sw
+	            "Console_In".Slot1.Ch9 := 0; // BUWClSw
+	            "Console_In".Slot1.Ch8 := 0; //Quill lock
+	        END_IF;
+	    IF #Test_Mode = #ElevCloseMode THEN
+	        //Elevator Close
+	        "Console_In".Slot2.Ch4 := 0;//PTO_sw
+	        "IO_Settings".ElevClSw := 0;
+	        
+	        "HPU_In".Slot4.Ch9 := 0; //"ElevClFeedback":="HPU_In".Slot4.Ch9;
+	        "Console_In".Slot2.Ch2 := 1; // "ElevClSw" := "Console_In".Slot2.Ch2;
+	        "Console_In".Slot2.Ch0 := 0;//"ElevOpSw" := "Console_In".Slot2.Ch0;
+	    END_IF;
+	    IF #Test_Mode = #ElevOpenMode THEN
+	        //Elevator Open
+	        "Console_In".Slot2.Ch4 := 1;//PTO_sw
+	        "Console_In".Slot2.Ch2 := 0; // "ElevClSw" := "Console_In".Slot2.Ch2;
+	        "Console_In".Slot2.Ch0 := 1;//"ElevOpSw" := "Console_In".Slot2.Ch0;
+	    END_IF;
+	
+	     IF #Test_Mode = #MudSaverCloseMode THEN
+	         //Mud Saver Valve
+	         //Close,Aux, Open
+	         "Console_In".Slot1.Ch7 := 0; // //MPRunning
+	         "Console_In".Slot2.Ch6 := 1; //"MSVClSw" := "Console_In".Slot2.Ch6;
+	         "Console_In".Slot2.Ch7 := 0; //"MSVAutoSw" := "Console_In".Slot2.Ch7;
+	         "Console_In".Slot2.Ch8 := 0; //"MSVOpSw" := "Console_In".Slot2.Ch8;
+	     END_IF;
+	     IF #Test_Mode = #MudSaverOpenMode THEN
+	         "Console_In".Slot1.Ch7 := 0; // //MPRunning
+	         "Console_In".Slot2.Ch6 := 0; //"MSVClSw" := "Console_In".Slot2.Ch6;
+	         "Console_In".Slot2.Ch7 := 0; //"MSVAutoSw" := "Console_In".Slot2.Ch7;
+	         "Console_In".Slot2.Ch8 := 1; //"MSVOpSw" := "Console_In".Slot2.Ch8;
+	     END_IF;
+	     IF #Test_Mode=#MudSaverAutoMode THEN
+	         "Console_In".Slot1.Ch7 := 0; // //MPRunning
+	         "Console_In".Slot2.Ch6 := 0; //"MSVClSw" := "Console_In".Slot2.Ch6;
+	         "Console_In".Slot2.Ch7 := 1; //"MSVAutoSw" := "Console_In".Slot2.Ch7;
+	         "Console_In".Slot2.Ch8 := 0; //"MSVOpSw" := "Console_In".Slot2.Ch8;
+	     END_IF;
+	     IF #Test_Mode = #"MudSaverPumpRuningMode-0" THEN
+	         "Console_In".Slot1.Ch7 := 0; // //MPRunning
+	         "Console_In".Slot2.Ch6 := 0; //"MSVClSw" := "Console_In".Slot2.Ch6;
+	         "Console_In".Slot2.Ch7 := 1; //"MSVAutoSw" := "Console_In".Slot2.Ch7;
+	         "Console_In".Slot2.Ch8 := 0; //"MSVOpSw" := "Console_In".Slot2.Ch8;
+	     END_IF;
+	     IF #Test_Mode = #"MudSaverPumpRuningMode-1" THEN
+	         "Console_In".Slot1.Ch7 := 1; // //MPRunning
+	         "Console_In".Slot2.Ch6 := 0; //"MSVClSw" := "Console_In".Slot2.Ch6;
+	         "Console_In".Slot2.Ch7 := 1; //"MSVAutoSw" := "Console_In".Slot2.Ch7;
+	         "Console_In".Slot2.Ch8 := 0; //"MSVOpSw" := "Console_In".Slot2.Ch8;
+	     END_IF;
+	//LEDs
+	#PTOLED := "PTOLED"; //"Console_Out".Slot4.Ch0 := "PTOLED";
+	#HpuFaultLed := "HPUFaultLED";//"Console_Out".Slot4.Ch1 := "HPUFaultLED";
+	#BUWCLLED := "BUWClLED";
+	#QuillLockLED := "QuillLockLED";
+	#TDEnableLed := "TDEnLED";
+	#MSVClLED := "MSVClLED";
+	#ElevatorCLLED := "ElevClLED";
+	//"Console_Out".Slot4.Ch2 := "TDFlushFaultLED";
+	//"Console_Out".Slot4.Ch3 := "BUWClLED";
+	//"Console_Out".Slot4.Ch4 := "TDEnLED";
+	//"Console_Out".Slot4.Ch5 := "ConLowPurgeLED";
+	//"Console_Out".Slot4.Ch6 := "MSVClLED";
+	//"Console_Out".Slot4.Ch7 := "QuillLockLED";
+	//"Console_Out".Slot4.Ch8 := "ElevClLED";
+	//"Console_Out".Slot4.Ch9 := "Horn";
+	//"Console_Out".Slot4.Ch10 := "MSVClInt";
+	//"Console_Out".Slot4.Ch11 := "BUWClInt";
+	//
+	//Setup of TD Drive for all feedback signals
+	//
+	"Console_In".Slot3.Ch0 := 1000;//"MUTorqPotRaw":="Console_In".Slot3.Ch0;
+	"Console_In".Slot3.Ch1 := 1100; //"DrillTorqPotRaw" := "Console_In".Slot3.Ch1;
+	"Console_In".Slot3.Ch2 := 1200;;//"DrillThrottlePotRaw":="Console_In".Slot3.Ch2;
+	
+	//"Console_In".Slot1.Ch13 := 0;//"TDModeMUTorqSw":= "Console_In".Slot1.Ch13;
+	//"Console_In".Slot1.Ch14 := 0; //"TDModeDrillRevSw
+	//"Console_In".Slot1.Ch15 := 0; //"TDBOBeakOutSw" := "Console_In".Slot1.Ch15;
+	
+	"HPU_In".Slot2.COUNT_VALUE:=1000; //"RotaryCounts" := "HPU_In".Slot2.COUNT_VALUE;
+	
+	"HPU_In".Slot4.Ch0 := 1;   //"TankLowLevelSw" := "HPU_In".Slot4.Ch0;
+	"HPU_In".Slot4.Ch1 := 1;   //"TankHighTempSw" := "HPU_In".Slot4.Ch1;
+	
+	"HPU_In".Slot4.Ch2 := 1;   //"TDFwdFilter1" := "HPU_In".Slot4.Ch2;
+	"HPU_In".Slot4.Ch3 := 1;//"TDFwdFilter2" := "HPU_In".Slot4.Ch3;
+	"HPU_In".Slot4.Ch4 := 1;//"TDRevFilter1" := "HPU_In".Slot4.Ch4;
+	"HPU_In".Slot4.Ch5 := 1;//"TDRevFilter2" := "HPU_In".Slot4.Ch5;
+	"HPU_In".Slot4.Ch6 := 1;//"AuxReturnFilter" := "HPU_In".Slot4.Ch6;
+	
+	"HPU_In".Slot5.Ch0 := 10000;//M1 Current
+	"HPU_In".Slot5.Ch1 := 15000;//M2 Current
+	IF #Test_Mode <> #QuillLockMode THEN
+	    "HPU_In".Slot6.Ch0 := 12345;//TD Pressure Fwd
+	    "HPU_In".Slot6.Ch1 := 12345;//TD Pressure Rev
+	END_IF;
+	"HPU_In".Slot6.Ch2 := 15000;  //"ClosedLoopTempRaw" := "HPU_In".Slot6.Ch2;
+	"HPU_In".Slot6.Ch3 := 15000;  //Charge Flow
+	"HPU_In".Slot6.Ch4 := 15000;  //Hot Oil Shuttle Flow
+	"HPU_In".Slot6.Ch5 := 15000;  //Auxilliary Flow
+	"HPU_In".Slot6.Ch6 := 15000;  //Charge Pressure1
+	"HPU_In".Slot6.Ch7 := 15000;  //Charge Pressure2
+	
+	"HPU_In".Slot3.Ch0 := 1; //AuxPumpRunning feedback
+	"HPU_In".Slot3.Ch1 := 1; //"CoolingFanRunning" := "HPU_In".Slot3.Ch1;
+	
+	
+	IF #Test_Mode = #AuxByPassMode OR #Test_Mode = #AuxByPassModeDone THEN
+	    "HPU_In".Slot3.Ch2 := 0;//M1Running
+	    "HPU_In".Slot3.Ch3 := 0;//M2Running
+	ELSE
+	    "HPU_In".Slot3.Ch2 := 1;//M1Running
+	    "HPU_In".Slot3.Ch3 := 1;//M2Running
+	END_IF;
+	"HPU_In".Slot3.Ch6 := 1;//M1HOA
+	"HPU_In".Slot3.Ch7 := 1; //M2HOA
+	"HPU_In".Slot3.Ch8 := 1;//"TDFlushFlowSw":="HPU_In".Slot3.Ch8; //blink the TEEnable LED
+	"HPU_In".Slot3.Ch5 := 1; //"CoolingFanHOA" := "HPU_In".Slot3.Ch5;
+	"HPU_In".Slot3.Ch4 := 1;//"AuxPumpHOA" := "HPU_In".Slot3.Ch4;
+END_FUNCTION_BLOCK
+

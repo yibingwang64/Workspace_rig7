@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V18" />
+  <SW.Blocks.InstanceDB ID="0">
+    <AttributeList>
+      <AutoNumber>false</AutoNumber>
+      <InstanceOfName>Comms</InstanceOfName>
+      <InstanceOfType>FB</InstanceOfType>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Input" />
+  <Section Name="Output" />
+  <Section Name="InOut" />
+  <Section Name="Static">
+    <Member Name="DeviceLADDR" Datatype="HW_IOSYSTEM" />
+    <Member Name="DeviceMode" Datatype="UInt" />
+    <Member Name="DeviceReturn" Datatype="Int" />
+    <Member Name="DeviceStates" Datatype="Array[0..1023] of Bool" />
+    <Member Name="DeviceFault" Datatype="Array[0..1023] of Bool" />
+    <Member Name="HpuPlcStatus" Datatype="Bool" />
+    <Member Name="HpuPlcOnline" Datatype="Bool" />
+    <Member Name="ConRIOStatus" Datatype="Bool" />
+    <Member Name="ConRIOOnline" Datatype="Bool" />
+    <Member Name="HpuHmiStatus" Datatype="Bool" />
+    <Member Name="HpuHmiOnline" Datatype="Bool" />
+    <Member Name="ConHmiStatus" Datatype="Bool" />
+    <Member Name="ConHmiOnline" Datatype="Bool" />
+    <Member Name="DHHmiStatus" Datatype="Bool" />
+    <Member Name="DHHmiOnline" Datatype="Bool" />
+    <Member Name="CouplerStatus" Datatype="Bool" />
+    <Member Name="CouplerOnline" Datatype="Bool" />
+    <Member Name="RemHearbeatOK" Datatype="Bool" />
+    <Member Name="HBOn_TON" Datatype="TON_TIME" Version="1.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="HeatbeatLost" Datatype="Bool">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="HBOff_TON" Datatype="TON_TIME" Version="1.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="HBPosTrig" Datatype="Bool" />
+    <Member Name="HBNegTrig" Datatype="Bool" />
+  </Section>
+</Sections></Interface>
+      <Name>Comms_DB</Name>
+      <Namespace />
+      <Number>22</Number>
+      <ProgrammingLanguage>DB</ProgrammingLanguage>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="3" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.InstanceDB>
+</Document>

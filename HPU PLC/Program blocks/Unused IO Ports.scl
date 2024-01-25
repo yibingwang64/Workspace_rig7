@@ -1,0 +1,16 @@
+﻿FUNCTION "Unused IO Ports" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+
+BEGIN
+	
+	//Rig 3 unused IO Port. Set its value to ).
+	"ClosedLoopTempCFilt" := 0;
+	"ClosedLoopTempCMax" := 0;
+	"HotOilFlowGPMFilt" := 0;
+	"AuxFlowGPMFilt" := 0;
+	"ChargeFlowGPMFilt" := 0;
+	"ChargePress1PSIFilt" := 0;
+	"ChargePress2PSIFilt" := 0;
+END_FUNCTION
+

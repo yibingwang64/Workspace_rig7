@@ -1,0 +1,18 @@
+﻿FUNCTION "TM_Pulse_mA2Raw" : Int
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT 
+      maInput : Real;
+   END_VAR
+
+
+BEGIN
+	(* TM_Pulse_mA2Raw Written BY Kristopher Gimenez January 19,2023
+	This block is used to convert the ma current outputs to a raw signal for  2CH TM pulse module. Note 2A = 27648. 
+	*)
+	
+	
+	#TM_Pulse_mA2Raw := REAL_TO_INT(#maInput/2000*27648);
+	
+END_FUNCTION
+

@@ -1,0 +1,627 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V18" />
+  <SW.Blocks.FB ID="0">
+    <AttributeList>
+      <AutoNumber>false</AutoNumber>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Input" />
+  <Section Name="Output">
+    <Member Name="FlowFwdmAOut" Datatype="Real" />
+    <Member Name="TorqmAOut" Datatype="Real" />
+    <Member Name="FwdEnableP1" Datatype="Bool" />
+    <Member Name="FwdEnableP2" Datatype="Bool" />
+    <Member Name="TorqEn" Datatype="Bool" />
+  </Section>
+  <Section Name="InOut" />
+  <Section Name="Static">
+    <Member Name="LinkExtSw_Last" Datatype="Bool" />
+    <Member Name="LinkRetSw_Last" Datatype="Bool" />
+    <Member Name="MUSpinComplete" Datatype="Bool" />
+  </Section>
+  <Section Name="Temp">
+    <Member Name="TorqPSITemp" Datatype="Real" />
+  </Section>
+  <Section Name="Constant" />
+</Sections></Interface>
+      <MemoryLayout>Optimized</MemoryLayout>
+      <MemoryReserve>100</MemoryReserve>
+      <Name>MU_Spin</Name>
+      <Namespace />
+      <Number>31</Number>
+      <ProgrammingLanguage>LAD</ProgrammingLanguage>
+      <SetENOAutomatically>false</SetENOAutomatically>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text>Written BY Kristopher Gimenez Feb 3,2023
+This block is used to control the TD MU Spin mode</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <SW.Blocks.CompileUnit ID="3" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v4">
+  <Parts>
+    <Access Scope="GlobalVariable" UId="21">
+      <Symbol>
+        <Component Name="PTOConfirmed" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="22">
+      <Symbol>
+        <Component Name="LinkExtSw" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="23">
+      <Symbol>
+        <Component Name="LinkExtSw_Last" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="24">
+      <Symbol>
+        <Component Name="Settings" />
+        <Component Name="SpinSpeedPer" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="25">
+      <Symbol>
+        <Component Name="Settings" />
+        <Component Name="MUSpinAdjInc" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="26">
+      <Symbol>
+        <Component Name="Settings" />
+        <Component Name="SpinSpeedPer" />
+      </Symbol>
+    </Access>
+    <Access Scope="LiteralConstant" UId="27">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>0.0</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="GlobalVariable" UId="28">
+      <Symbol>
+        <Component Name="Settings" />
+        <Component Name="SpinSpeedPer" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="29">
+      <Symbol>
+        <Component Name="Settings" />
+        <Component Name="MUSpinMaxSpeedPer" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="30">
+      <Symbol>
+        <Component Name="Settings" />
+        <Component Name="SpinSpeedPer" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="31">
+      <Symbol>
+        <Component Name="LinkRetSw" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="32">
+      <Symbol>
+        <Component Name="LinkRetSw_Last" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="33">
+      <Symbol>
+        <Component Name="Settings" />
+        <Component Name="SpinSpeedPer" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="34">
+      <Symbol>
+        <Component Name="Settings" />
+        <Component Name="MUSpinAdjInc" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="35">
+      <Symbol>
+        <Component Name="Settings" />
+        <Component Name="SpinSpeedPer" />
+      </Symbol>
+    </Access>
+    <Access Scope="LiteralConstant" UId="36">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>0.0</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="GlobalVariable" UId="37">
+      <Symbol>
+        <Component Name="Settings" />
+        <Component Name="SpinSpeedPer" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="38">
+      <Symbol>
+        <Component Name="Settings" />
+        <Component Name="MUSpinMaxSpeedPer" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="39">
+      <Symbol>
+        <Component Name="Settings" />
+        <Component Name="SpinSpeedPer" />
+      </Symbol>
+    </Access>
+    <Part Name="Contact" UId="40" />
+    <Part Name="PContact" UId="41" />
+    <Part Name="Add" UId="42" DisabledENO="true">
+      <TemplateValue Name="Card" Type="Cardinality">2</TemplateValue>
+      <AutomaticTyped Name="SrcType" />
+    </Part>
+    <Part Name="LIMIT" Version="1.0" UId="43" DisabledENO="true">
+      <TemplateValue Name="value_type" Type="Type">Real</TemplateValue>
+    </Part>
+    <Part Name="PContact" UId="44" />
+    <Part Name="Sub" UId="45" DisabledENO="true">
+      <AutomaticTyped Name="SrcType" />
+    </Part>
+    <Part Name="LIMIT" Version="1.0" UId="46" DisabledENO="true">
+      <TemplateValue Name="value_type" Type="Type">Real</TemplateValue>
+    </Part>
+  </Parts>
+  <Wires>
+    <Wire UId="47">
+      <Powerrail />
+      <NameCon UId="40" Name="in" />
+    </Wire>
+    <Wire UId="48">
+      <IdentCon UId="21" />
+      <NameCon UId="40" Name="operand" />
+    </Wire>
+    <Wire UId="49">
+      <NameCon UId="40" Name="out" />
+      <NameCon UId="41" Name="pre" />
+      <NameCon UId="44" Name="pre" />
+    </Wire>
+    <Wire UId="50">
+      <IdentCon UId="23" />
+      <NameCon UId="41" Name="bit" />
+    </Wire>
+    <Wire UId="51">
+      <IdentCon UId="22" />
+      <NameCon UId="41" Name="operand" />
+    </Wire>
+    <Wire UId="52">
+      <NameCon UId="41" Name="out" />
+      <NameCon UId="42" Name="en" />
+    </Wire>
+    <Wire UId="53">
+      <IdentCon UId="24" />
+      <NameCon UId="42" Name="in1" />
+    </Wire>
+    <Wire UId="54">
+      <IdentCon UId="25" />
+      <NameCon UId="42" Name="in2" />
+    </Wire>
+    <Wire UId="55">
+      <NameCon UId="42" Name="eno" />
+      <NameCon UId="43" Name="en" />
+    </Wire>
+    <Wire UId="56">
+      <NameCon UId="42" Name="out" />
+      <IdentCon UId="26" />
+    </Wire>
+    <Wire UId="57">
+      <IdentCon UId="27" />
+      <NameCon UId="43" Name="MN" />
+    </Wire>
+    <Wire UId="58">
+      <IdentCon UId="28" />
+      <NameCon UId="43" Name="IN" />
+    </Wire>
+    <Wire UId="59">
+      <IdentCon UId="29" />
+      <NameCon UId="43" Name="MX" />
+    </Wire>
+    <Wire UId="60">
+      <NameCon UId="43" Name="OUT" />
+      <IdentCon UId="30" />
+    </Wire>
+    <Wire UId="61">
+      <IdentCon UId="32" />
+      <NameCon UId="44" Name="bit" />
+    </Wire>
+    <Wire UId="62">
+      <IdentCon UId="31" />
+      <NameCon UId="44" Name="operand" />
+    </Wire>
+    <Wire UId="63">
+      <NameCon UId="44" Name="out" />
+      <NameCon UId="45" Name="en" />
+    </Wire>
+    <Wire UId="64">
+      <IdentCon UId="33" />
+      <NameCon UId="45" Name="in1" />
+    </Wire>
+    <Wire UId="65">
+      <IdentCon UId="34" />
+      <NameCon UId="45" Name="in2" />
+    </Wire>
+    <Wire UId="66">
+      <NameCon UId="45" Name="eno" />
+      <NameCon UId="46" Name="en" />
+    </Wire>
+    <Wire UId="67">
+      <NameCon UId="45" Name="out" />
+      <IdentCon UId="35" />
+    </Wire>
+    <Wire UId="68">
+      <IdentCon UId="36" />
+      <NameCon UId="46" Name="MN" />
+    </Wire>
+    <Wire UId="69">
+      <IdentCon UId="37" />
+      <NameCon UId="46" Name="IN" />
+    </Wire>
+    <Wire UId="70">
+      <IdentCon UId="38" />
+      <NameCon UId="46" Name="MX" />
+    </Wire>
+    <Wire UId="71">
+      <NameCon UId="46" Name="OUT" />
+      <IdentCon UId="39" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="4" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="5" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>If PTO confirmed in MU Spin mode allow user to adjust spin speed setpoint using Link Tilt Joysticks</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="6" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="7" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Speed Adjust</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="8" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v4">
+  <Parts>
+    <Access Scope="GlobalVariable" UId="21">
+      <Symbol>
+        <Component Name="ActTorqFtLbsFilt" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="22">
+      <Symbol>
+        <Component Name="Settings" />
+        <Component Name="MUSpinTorqFtlbs" />
+      </Symbol>
+    </Access>
+    <Access Scope="LiteralConstant" UId="23">
+      <Constant>
+        <ConstantType>Bool</ConstantType>
+        <ConstantValue>false</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="GlobalVariable" UId="24">
+      <Symbol>
+        <Component Name="Settings" />
+        <Component Name="SpinSpeedPer" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="25">
+      <Symbol>
+        <Component Name="Settings" />
+        <Component Name="PotZero" />
+      </Symbol>
+    </Access>
+    <Access Scope="LiteralConstant" UId="26">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>100.0</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="GlobalVariable" UId="27">
+      <Symbol>
+        <Component Name="Settings" />
+        <Component Name="PumpOutMinmA" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="28">
+      <Symbol>
+        <Component Name="Settings" />
+        <Component Name="PumpOutMaxmA" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="29">
+      <Symbol>
+        <Component Name="FlowFwdmAOut" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="30">
+      <Symbol>
+        <Component Name="FwdEnableP1" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="31">
+      <Symbol>
+        <Component Name="FwdEnableP2" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="32">
+      <Symbol>
+        <Component Name="Settings" />
+        <Component Name="MUSpinTorqFtlbs" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="33">
+      <Symbol>
+        <Component Name="Settings" />
+        <Component Name="TorqOutLSHT" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="34">
+      <Symbol>
+        <Component Name="TorqPSITemp" />
+      </Symbol>
+    </Access>
+    <Access Scope="LiteralConstant" UId="35">
+      <Constant>
+        <ConstantType>Bool</ConstantType>
+        <ConstantValue>false</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="LocalVariable" UId="36">
+      <Symbol>
+        <Component Name="TorqPSITemp" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="37">
+      <Symbol>
+        <Component Name="Settings" />
+        <Component Name="TorqOutMinPSI" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="38">
+      <Symbol>
+        <Component Name="Settings" />
+        <Component Name="TorqOutMaxPSI" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="39">
+      <Symbol>
+        <Component Name="Settings" />
+        <Component Name="TorqOutMinmA" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="40">
+      <Symbol>
+        <Component Name="Settings" />
+        <Component Name="TorqOutMaxmA" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="41">
+      <Symbol>
+        <Component Name="TorqmAOut" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="42">
+      <Symbol>
+        <Component Name="TorqEn" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="43">
+      <Symbol>
+        <Component Name="MUSpinComplete" />
+      </Symbol>
+    </Access>
+    <Part Name="Le" UId="44">
+      <TemplateValue Name="SrcType" Type="Type">Real</TemplateValue>
+    </Part>
+    <Call UId="45">
+      <CallInfo Name="Pump_Output" BlockType="FC">
+        <Parameter Name="Disable" Section="Input" Type="Bool" />
+        <Parameter Name="InputValue" Section="Input" Type="Real" />
+        <Parameter Name="InMin" Section="Input" Type="Real" />
+        <Parameter Name="InMax" Section="Input" Type="Real" />
+        <Parameter Name="OutMin_mA" Section="Input" Type="Real" />
+        <Parameter Name="OutMax_mA" Section="Input" Type="Real" />
+        <Parameter Name="mAOut" Section="Output" Type="Real" />
+      </CallInfo>
+    </Call>
+    <Part Name="Coil" UId="46" />
+    <Part Name="Coil" UId="47" />
+    <Part Name="Div" UId="48" DisabledENO="true">
+      <AutomaticTyped Name="SrcType" />
+    </Part>
+    <Call UId="49">
+      <CallInfo Name="Pump_Output" BlockType="FC">
+        <Parameter Name="Disable" Section="Input" Type="Bool" />
+        <Parameter Name="InputValue" Section="Input" Type="Real" />
+        <Parameter Name="InMin" Section="Input" Type="Real" />
+        <Parameter Name="InMax" Section="Input" Type="Real" />
+        <Parameter Name="OutMin_mA" Section="Input" Type="Real" />
+        <Parameter Name="OutMax_mA" Section="Input" Type="Real" />
+        <Parameter Name="mAOut" Section="Output" Type="Real" />
+      </CallInfo>
+    </Call>
+    <Part Name="Coil" UId="50" />
+    <Part Name="RCoil" UId="51" />
+  </Parts>
+  <Wires>
+    <Wire UId="52">
+      <Powerrail />
+      <NameCon UId="44" Name="pre" />
+      <NameCon UId="51" Name="in" />
+    </Wire>
+    <Wire UId="53">
+      <IdentCon UId="21" />
+      <NameCon UId="44" Name="in1" />
+    </Wire>
+    <Wire UId="54">
+      <IdentCon UId="22" />
+      <NameCon UId="44" Name="in2" />
+    </Wire>
+    <Wire UId="55">
+      <NameCon UId="44" Name="out" />
+      <NameCon UId="45" Name="en" />
+      <NameCon UId="48" Name="en" />
+    </Wire>
+    <Wire UId="56">
+      <IdentCon UId="23" />
+      <NameCon UId="45" Name="Disable" />
+    </Wire>
+    <Wire UId="57">
+      <IdentCon UId="24" />
+      <NameCon UId="45" Name="InputValue" />
+    </Wire>
+    <Wire UId="58">
+      <IdentCon UId="25" />
+      <NameCon UId="45" Name="InMin" />
+    </Wire>
+    <Wire UId="59">
+      <IdentCon UId="26" />
+      <NameCon UId="45" Name="InMax" />
+    </Wire>
+    <Wire UId="60">
+      <IdentCon UId="27" />
+      <NameCon UId="45" Name="OutMin_mA" />
+    </Wire>
+    <Wire UId="61">
+      <IdentCon UId="28" />
+      <NameCon UId="45" Name="OutMax_mA" />
+    </Wire>
+    <Wire UId="62">
+      <NameCon UId="45" Name="eno" />
+      <NameCon UId="46" Name="in" />
+      <NameCon UId="47" Name="in" />
+    </Wire>
+    <Wire UId="63">
+      <NameCon UId="45" Name="mAOut" />
+      <IdentCon UId="29" />
+    </Wire>
+    <Wire UId="64">
+      <IdentCon UId="30" />
+      <NameCon UId="46" Name="operand" />
+    </Wire>
+    <Wire UId="65">
+      <IdentCon UId="31" />
+      <NameCon UId="47" Name="operand" />
+    </Wire>
+    <Wire UId="66">
+      <IdentCon UId="32" />
+      <NameCon UId="48" Name="in1" />
+    </Wire>
+    <Wire UId="67">
+      <IdentCon UId="33" />
+      <NameCon UId="48" Name="in2" />
+    </Wire>
+    <Wire UId="68">
+      <NameCon UId="48" Name="eno" />
+      <NameCon UId="49" Name="en" />
+    </Wire>
+    <Wire UId="69">
+      <NameCon UId="48" Name="out" />
+      <IdentCon UId="34" />
+    </Wire>
+    <Wire UId="70">
+      <IdentCon UId="35" />
+      <NameCon UId="49" Name="Disable" />
+    </Wire>
+    <Wire UId="71">
+      <IdentCon UId="36" />
+      <NameCon UId="49" Name="InputValue" />
+    </Wire>
+    <Wire UId="72">
+      <IdentCon UId="37" />
+      <NameCon UId="49" Name="InMin" />
+    </Wire>
+    <Wire UId="73">
+      <IdentCon UId="38" />
+      <NameCon UId="49" Name="InMax" />
+    </Wire>
+    <Wire UId="74">
+      <IdentCon UId="39" />
+      <NameCon UId="49" Name="OutMin_mA" />
+    </Wire>
+    <Wire UId="75">
+      <IdentCon UId="40" />
+      <NameCon UId="49" Name="OutMax_mA" />
+    </Wire>
+    <Wire UId="76">
+      <NameCon UId="49" Name="eno" />
+      <NameCon UId="50" Name="in" />
+    </Wire>
+    <Wire UId="77">
+      <NameCon UId="49" Name="mAOut" />
+      <IdentCon UId="41" />
+    </Wire>
+    <Wire UId="78">
+      <IdentCon UId="42" />
+      <NameCon UId="50" Name="operand" />
+    </Wire>
+    <Wire UId="79">
+      <IdentCon UId="43" />
+      <NameCon UId="51" Name="operand" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="9" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="A" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>If torq not above MU Spin max torq allow MU Spin</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="B" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="C" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Make Up Spin</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <MultilingualText ID="D" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="E" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text>MU Spin</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.FB>
+</Document>

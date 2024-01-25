@@ -1,0 +1,1112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V18" />
+  <SW.Blocks.FC ID="0">
+    <AttributeList>
+      <AutoNumber>false</AutoNumber>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Input" />
+  <Section Name="Output" />
+  <Section Name="InOut" />
+  <Section Name="Temp" />
+  <Section Name="Constant" />
+  <Section Name="Return">
+    <Member Name="Ret_Val" Datatype="Void" />
+  </Section>
+</Sections></Interface>
+      <MemoryLayout>Optimized</MemoryLayout>
+      <Name>Verify_Settings</Name>
+      <Namespace />
+      <Number>21</Number>
+      <ProgrammingLanguage>LAD</ProgrammingLanguage>
+      <SetENOAutomatically>false</SetENOAutomatically>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text>Written BY Kristopher Gimenez February 9th, 2023
+This block is used to check the settings are within limits and adjust as needed</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <SW.Blocks.CompileUnit ID="3" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v4">
+  <Parts>
+    <Access Scope="LiteralConstant" UId="21">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>0.0</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="GlobalVariable" UId="22">
+      <Symbol>
+        <Component Name="Settings" />
+        <Component Name="ActTorqAlpha" />
+      </Symbol>
+    </Access>
+    <Access Scope="LiteralConstant" UId="23">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>1.0</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="GlobalVariable" UId="24">
+      <Symbol>
+        <Component Name="Settings" />
+        <Component Name="ActTorqAlpha" />
+      </Symbol>
+    </Access>
+    <Access Scope="LiteralConstant" UId="25">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>0.0</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="GlobalVariable" UId="26">
+      <Symbol>
+        <Component Name="Settings" />
+        <Component Name="AuxFlowAlpha" />
+      </Symbol>
+    </Access>
+    <Access Scope="LiteralConstant" UId="27">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>1.0</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="GlobalVariable" UId="28">
+      <Symbol>
+        <Component Name="Settings" />
+        <Component Name="AuxFlowAlpha" />
+      </Symbol>
+    </Access>
+    <Access Scope="LiteralConstant" UId="29">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>0.0</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="GlobalVariable" UId="30">
+      <Symbol>
+        <Component Name="Settings" />
+        <Component Name="ChargeFlowAlpha" />
+      </Symbol>
+    </Access>
+    <Access Scope="LiteralConstant" UId="31">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>1.0</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="GlobalVariable" UId="32">
+      <Symbol>
+        <Component Name="Settings" />
+        <Component Name="ChargeFlowAlpha" />
+      </Symbol>
+    </Access>
+    <Access Scope="LiteralConstant" UId="33">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>0.0</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="GlobalVariable" UId="34">
+      <Symbol>
+        <Component Name="Settings" />
+        <Component Name="ChargePress1Alpha" />
+      </Symbol>
+    </Access>
+    <Access Scope="LiteralConstant" UId="35">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>1.0</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="GlobalVariable" UId="36">
+      <Symbol>
+        <Component Name="Settings" />
+        <Component Name="ChargePress1Alpha" />
+      </Symbol>
+    </Access>
+    <Access Scope="LiteralConstant" UId="37">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>0.0</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="GlobalVariable" UId="38">
+      <Symbol>
+        <Component Name="Settings" />
+        <Component Name="ChargePress2Alpha" />
+      </Symbol>
+    </Access>
+    <Access Scope="LiteralConstant" UId="39">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>1.0</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="GlobalVariable" UId="40">
+      <Symbol>
+        <Component Name="Settings" />
+        <Component Name="ChargePress2Alpha" />
+      </Symbol>
+    </Access>
+    <Access Scope="LiteralConstant" UId="41">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>0.0</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="GlobalVariable" UId="42">
+      <Symbol>
+        <Component Name="Settings" />
+        <Component Name="CLTempAlpha" />
+      </Symbol>
+    </Access>
+    <Access Scope="LiteralConstant" UId="43">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>1.0</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="GlobalVariable" UId="44">
+      <Symbol>
+        <Component Name="Settings" />
+        <Component Name="CLTempAlpha" />
+      </Symbol>
+    </Access>
+    <Access Scope="LiteralConstant" UId="45">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>0.0</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="GlobalVariable" UId="46">
+      <Symbol>
+        <Component Name="Settings" />
+        <Component Name="DrillThrottleAlpha" />
+      </Symbol>
+    </Access>
+    <Access Scope="LiteralConstant" UId="47">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>1.0</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="GlobalVariable" UId="48">
+      <Symbol>
+        <Component Name="Settings" />
+        <Component Name="DrillThrottleAlpha" />
+      </Symbol>
+    </Access>
+    <Access Scope="LiteralConstant" UId="49">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>0.0</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="GlobalVariable" UId="50">
+      <Symbol>
+        <Component Name="Settings" />
+        <Component Name="DrillTorqPotAlpha" />
+      </Symbol>
+    </Access>
+    <Access Scope="LiteralConstant" UId="51">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>1.0</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="GlobalVariable" UId="52">
+      <Symbol>
+        <Component Name="Settings" />
+        <Component Name="DrillTorqPotAlpha" />
+      </Symbol>
+    </Access>
+    <Access Scope="LiteralConstant" UId="53">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>0.0</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="GlobalVariable" UId="54">
+      <Symbol>
+        <Component Name="Settings" />
+        <Component Name="HotOilFlowAlpha" />
+      </Symbol>
+    </Access>
+    <Access Scope="LiteralConstant" UId="55">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>1.0</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="GlobalVariable" UId="56">
+      <Symbol>
+        <Component Name="Settings" />
+        <Component Name="HotOilFlowAlpha" />
+      </Symbol>
+    </Access>
+    <Access Scope="LiteralConstant" UId="57">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>0.0</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="GlobalVariable" UId="58">
+      <Symbol>
+        <Component Name="Settings" />
+        <Component Name="M1CurrentAlpha" />
+      </Symbol>
+    </Access>
+    <Access Scope="LiteralConstant" UId="59">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>1.0</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="GlobalVariable" UId="60">
+      <Symbol>
+        <Component Name="Settings" />
+        <Component Name="M1CurrentAlpha" />
+      </Symbol>
+    </Access>
+    <Access Scope="LiteralConstant" UId="61">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>0.0</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="GlobalVariable" UId="62">
+      <Symbol>
+        <Component Name="Settings" />
+        <Component Name="M2CurrentAlpha" />
+      </Symbol>
+    </Access>
+    <Access Scope="LiteralConstant" UId="63">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>1.0</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="GlobalVariable" UId="64">
+      <Symbol>
+        <Component Name="Settings" />
+        <Component Name="M2CurrentAlpha" />
+      </Symbol>
+    </Access>
+    <Access Scope="LiteralConstant" UId="65">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>0.0</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="GlobalVariable" UId="66">
+      <Symbol>
+        <Component Name="Settings" />
+        <Component Name="MUTorqPotAlpha" />
+      </Symbol>
+    </Access>
+    <Access Scope="LiteralConstant" UId="67">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>1.0</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="GlobalVariable" UId="68">
+      <Symbol>
+        <Component Name="Settings" />
+        <Component Name="MUTorqPotAlpha" />
+      </Symbol>
+    </Access>
+    <Access Scope="LiteralConstant" UId="69">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>0.0</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="GlobalVariable" UId="70">
+      <Symbol>
+        <Component Name="Settings" />
+        <Component Name="TDFwdPressAlpha" />
+      </Symbol>
+    </Access>
+    <Access Scope="LiteralConstant" UId="71">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>1.0</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="GlobalVariable" UId="72">
+      <Symbol>
+        <Component Name="Settings" />
+        <Component Name="TDFwdPressAlpha" />
+      </Symbol>
+    </Access>
+    <Access Scope="LiteralConstant" UId="73">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>0.0</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="GlobalVariable" UId="74">
+      <Symbol>
+        <Component Name="Settings" />
+        <Component Name="TDRevPressAlpha" />
+      </Symbol>
+    </Access>
+    <Access Scope="LiteralConstant" UId="75">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>1.0</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="GlobalVariable" UId="76">
+      <Symbol>
+        <Component Name="Settings" />
+        <Component Name="TDRevPressAlpha" />
+      </Symbol>
+    </Access>
+    <Part Name="LIMIT" Version="1.0" UId="77" DisabledENO="true">
+      <TemplateValue Name="value_type" Type="Type">Real</TemplateValue>
+    </Part>
+    <Part Name="LIMIT" Version="1.0" UId="78" DisabledENO="true">
+      <TemplateValue Name="value_type" Type="Type">Real</TemplateValue>
+    </Part>
+    <Part Name="LIMIT" Version="1.0" UId="79" DisabledENO="true">
+      <TemplateValue Name="value_type" Type="Type">Real</TemplateValue>
+    </Part>
+    <Part Name="LIMIT" Version="1.0" UId="80" DisabledENO="true">
+      <TemplateValue Name="value_type" Type="Type">Real</TemplateValue>
+    </Part>
+    <Part Name="LIMIT" Version="1.0" UId="81" DisabledENO="true">
+      <TemplateValue Name="value_type" Type="Type">Real</TemplateValue>
+    </Part>
+    <Part Name="LIMIT" Version="1.0" UId="82" DisabledENO="true">
+      <TemplateValue Name="value_type" Type="Type">Real</TemplateValue>
+    </Part>
+    <Part Name="LIMIT" Version="1.0" UId="83" DisabledENO="true">
+      <TemplateValue Name="value_type" Type="Type">Real</TemplateValue>
+    </Part>
+    <Part Name="LIMIT" Version="1.0" UId="84" DisabledENO="true">
+      <TemplateValue Name="value_type" Type="Type">Real</TemplateValue>
+    </Part>
+    <Part Name="LIMIT" Version="1.0" UId="85" DisabledENO="true">
+      <TemplateValue Name="value_type" Type="Type">Real</TemplateValue>
+    </Part>
+    <Part Name="LIMIT" Version="1.0" UId="86" DisabledENO="true">
+      <TemplateValue Name="value_type" Type="Type">Real</TemplateValue>
+    </Part>
+    <Part Name="LIMIT" Version="1.0" UId="87" DisabledENO="true">
+      <TemplateValue Name="value_type" Type="Type">Real</TemplateValue>
+    </Part>
+    <Part Name="LIMIT" Version="1.0" UId="88" DisabledENO="true">
+      <TemplateValue Name="value_type" Type="Type">Real</TemplateValue>
+    </Part>
+    <Part Name="LIMIT" Version="1.0" UId="89" DisabledENO="true">
+      <TemplateValue Name="value_type" Type="Type">Real</TemplateValue>
+    </Part>
+    <Part Name="LIMIT" Version="1.0" UId="90" DisabledENO="true">
+      <TemplateValue Name="value_type" Type="Type">Real</TemplateValue>
+    </Part>
+  </Parts>
+  <Wires>
+    <Wire UId="91">
+      <Powerrail />
+      <NameCon UId="77" Name="en" />
+      <NameCon UId="80" Name="en" />
+      <NameCon UId="83" Name="en" />
+      <NameCon UId="86" Name="en" />
+      <NameCon UId="89" Name="en" />
+    </Wire>
+    <Wire UId="92">
+      <IdentCon UId="21" />
+      <NameCon UId="77" Name="MN" />
+    </Wire>
+    <Wire UId="93">
+      <IdentCon UId="22" />
+      <NameCon UId="77" Name="IN" />
+    </Wire>
+    <Wire UId="94">
+      <IdentCon UId="23" />
+      <NameCon UId="77" Name="MX" />
+    </Wire>
+    <Wire UId="95">
+      <NameCon UId="77" Name="eno" />
+      <NameCon UId="78" Name="en" />
+    </Wire>
+    <Wire UId="96">
+      <NameCon UId="77" Name="OUT" />
+      <IdentCon UId="24" />
+    </Wire>
+    <Wire UId="97">
+      <IdentCon UId="25" />
+      <NameCon UId="78" Name="MN" />
+    </Wire>
+    <Wire UId="98">
+      <IdentCon UId="26" />
+      <NameCon UId="78" Name="IN" />
+    </Wire>
+    <Wire UId="99">
+      <IdentCon UId="27" />
+      <NameCon UId="78" Name="MX" />
+    </Wire>
+    <Wire UId="100">
+      <NameCon UId="78" Name="eno" />
+      <NameCon UId="79" Name="en" />
+    </Wire>
+    <Wire UId="101">
+      <NameCon UId="78" Name="OUT" />
+      <IdentCon UId="28" />
+    </Wire>
+    <Wire UId="102">
+      <IdentCon UId="29" />
+      <NameCon UId="79" Name="MN" />
+    </Wire>
+    <Wire UId="103">
+      <IdentCon UId="30" />
+      <NameCon UId="79" Name="IN" />
+    </Wire>
+    <Wire UId="104">
+      <IdentCon UId="31" />
+      <NameCon UId="79" Name="MX" />
+    </Wire>
+    <Wire UId="105">
+      <NameCon UId="79" Name="OUT" />
+      <IdentCon UId="32" />
+    </Wire>
+    <Wire UId="106">
+      <IdentCon UId="33" />
+      <NameCon UId="80" Name="MN" />
+    </Wire>
+    <Wire UId="107">
+      <IdentCon UId="34" />
+      <NameCon UId="80" Name="IN" />
+    </Wire>
+    <Wire UId="108">
+      <IdentCon UId="35" />
+      <NameCon UId="80" Name="MX" />
+    </Wire>
+    <Wire UId="109">
+      <NameCon UId="80" Name="eno" />
+      <NameCon UId="81" Name="en" />
+    </Wire>
+    <Wire UId="110">
+      <NameCon UId="80" Name="OUT" />
+      <IdentCon UId="36" />
+    </Wire>
+    <Wire UId="111">
+      <IdentCon UId="37" />
+      <NameCon UId="81" Name="MN" />
+    </Wire>
+    <Wire UId="112">
+      <IdentCon UId="38" />
+      <NameCon UId="81" Name="IN" />
+    </Wire>
+    <Wire UId="113">
+      <IdentCon UId="39" />
+      <NameCon UId="81" Name="MX" />
+    </Wire>
+    <Wire UId="114">
+      <NameCon UId="81" Name="eno" />
+      <NameCon UId="82" Name="en" />
+    </Wire>
+    <Wire UId="115">
+      <NameCon UId="81" Name="OUT" />
+      <IdentCon UId="40" />
+    </Wire>
+    <Wire UId="116">
+      <IdentCon UId="41" />
+      <NameCon UId="82" Name="MN" />
+    </Wire>
+    <Wire UId="117">
+      <IdentCon UId="42" />
+      <NameCon UId="82" Name="IN" />
+    </Wire>
+    <Wire UId="118">
+      <IdentCon UId="43" />
+      <NameCon UId="82" Name="MX" />
+    </Wire>
+    <Wire UId="119">
+      <NameCon UId="82" Name="OUT" />
+      <IdentCon UId="44" />
+    </Wire>
+    <Wire UId="120">
+      <IdentCon UId="45" />
+      <NameCon UId="83" Name="MN" />
+    </Wire>
+    <Wire UId="121">
+      <IdentCon UId="46" />
+      <NameCon UId="83" Name="IN" />
+    </Wire>
+    <Wire UId="122">
+      <IdentCon UId="47" />
+      <NameCon UId="83" Name="MX" />
+    </Wire>
+    <Wire UId="123">
+      <NameCon UId="83" Name="eno" />
+      <NameCon UId="84" Name="en" />
+    </Wire>
+    <Wire UId="124">
+      <NameCon UId="83" Name="OUT" />
+      <IdentCon UId="48" />
+    </Wire>
+    <Wire UId="125">
+      <IdentCon UId="49" />
+      <NameCon UId="84" Name="MN" />
+    </Wire>
+    <Wire UId="126">
+      <IdentCon UId="50" />
+      <NameCon UId="84" Name="IN" />
+    </Wire>
+    <Wire UId="127">
+      <IdentCon UId="51" />
+      <NameCon UId="84" Name="MX" />
+    </Wire>
+    <Wire UId="128">
+      <NameCon UId="84" Name="eno" />
+      <NameCon UId="85" Name="en" />
+    </Wire>
+    <Wire UId="129">
+      <NameCon UId="84" Name="OUT" />
+      <IdentCon UId="52" />
+    </Wire>
+    <Wire UId="130">
+      <IdentCon UId="53" />
+      <NameCon UId="85" Name="MN" />
+    </Wire>
+    <Wire UId="131">
+      <IdentCon UId="54" />
+      <NameCon UId="85" Name="IN" />
+    </Wire>
+    <Wire UId="132">
+      <IdentCon UId="55" />
+      <NameCon UId="85" Name="MX" />
+    </Wire>
+    <Wire UId="133">
+      <NameCon UId="85" Name="OUT" />
+      <IdentCon UId="56" />
+    </Wire>
+    <Wire UId="134">
+      <IdentCon UId="57" />
+      <NameCon UId="86" Name="MN" />
+    </Wire>
+    <Wire UId="135">
+      <IdentCon UId="58" />
+      <NameCon UId="86" Name="IN" />
+    </Wire>
+    <Wire UId="136">
+      <IdentCon UId="59" />
+      <NameCon UId="86" Name="MX" />
+    </Wire>
+    <Wire UId="137">
+      <NameCon UId="86" Name="eno" />
+      <NameCon UId="87" Name="en" />
+    </Wire>
+    <Wire UId="138">
+      <NameCon UId="86" Name="OUT" />
+      <IdentCon UId="60" />
+    </Wire>
+    <Wire UId="139">
+      <IdentCon UId="61" />
+      <NameCon UId="87" Name="MN" />
+    </Wire>
+    <Wire UId="140">
+      <IdentCon UId="62" />
+      <NameCon UId="87" Name="IN" />
+    </Wire>
+    <Wire UId="141">
+      <IdentCon UId="63" />
+      <NameCon UId="87" Name="MX" />
+    </Wire>
+    <Wire UId="142">
+      <NameCon UId="87" Name="eno" />
+      <NameCon UId="88" Name="en" />
+    </Wire>
+    <Wire UId="143">
+      <NameCon UId="87" Name="OUT" />
+      <IdentCon UId="64" />
+    </Wire>
+    <Wire UId="144">
+      <IdentCon UId="65" />
+      <NameCon UId="88" Name="MN" />
+    </Wire>
+    <Wire UId="145">
+      <IdentCon UId="66" />
+      <NameCon UId="88" Name="IN" />
+    </Wire>
+    <Wire UId="146">
+      <IdentCon UId="67" />
+      <NameCon UId="88" Name="MX" />
+    </Wire>
+    <Wire UId="147">
+      <NameCon UId="88" Name="OUT" />
+      <IdentCon UId="68" />
+    </Wire>
+    <Wire UId="148">
+      <IdentCon UId="69" />
+      <NameCon UId="89" Name="MN" />
+    </Wire>
+    <Wire UId="149">
+      <IdentCon UId="70" />
+      <NameCon UId="89" Name="IN" />
+    </Wire>
+    <Wire UId="150">
+      <IdentCon UId="71" />
+      <NameCon UId="89" Name="MX" />
+    </Wire>
+    <Wire UId="151">
+      <NameCon UId="89" Name="eno" />
+      <NameCon UId="90" Name="en" />
+    </Wire>
+    <Wire UId="152">
+      <NameCon UId="89" Name="OUT" />
+      <IdentCon UId="72" />
+    </Wire>
+    <Wire UId="153">
+      <IdentCon UId="73" />
+      <NameCon UId="90" Name="MN" />
+    </Wire>
+    <Wire UId="154">
+      <IdentCon UId="74" />
+      <NameCon UId="90" Name="IN" />
+    </Wire>
+    <Wire UId="155">
+      <IdentCon UId="75" />
+      <NameCon UId="90" Name="MX" />
+    </Wire>
+    <Wire UId="156">
+      <NameCon UId="90" Name="OUT" />
+      <IdentCon UId="76" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="4" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="5" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>All alpha filter values between 0-1</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="6" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="7" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Alpha Values</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="8" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v4">
+  <Parts>
+    <Access Scope="LiteralConstant" UId="21">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>1.0</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="GlobalVariable" UId="22">
+      <Symbol>
+        <Component Name="Settings" />
+        <Component Name="TorqSetFactor" />
+      </Symbol>
+    </Access>
+    <Access Scope="LiteralConstant" UId="23">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>1.5</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="GlobalVariable" UId="24">
+      <Symbol>
+        <Component Name="Settings" />
+        <Component Name="TorqSetFactor" />
+      </Symbol>
+    </Access>
+    <Access Scope="LiteralConstant" UId="25">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>0.0</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="GlobalVariable" UId="26">
+      <Symbol>
+        <Component Name="Settings" />
+        <Component Name="TorqEFactorLow" />
+      </Symbol>
+    </Access>
+    <Access Scope="LiteralConstant" UId="27">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>1.0</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="GlobalVariable" UId="28">
+      <Symbol>
+        <Component Name="Settings" />
+        <Component Name="TorqEFactorLow" />
+      </Symbol>
+    </Access>
+    <Access Scope="LiteralConstant" UId="29">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>0.0</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="GlobalVariable" UId="30">
+      <Symbol>
+        <Component Name="Settings" />
+        <Component Name="TorqEFactorHigh" />
+      </Symbol>
+    </Access>
+    <Access Scope="LiteralConstant" UId="31">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>1.0</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="GlobalVariable" UId="32">
+      <Symbol>
+        <Component Name="Settings" />
+        <Component Name="TorqEFactorHigh" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="33">
+      <Symbol>
+        <Component Name="Settings" />
+        <Component Name="TorqEFactorLow" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="34">
+      <Symbol>
+        <Component Name="Settings" />
+        <Component Name="TorqEFactorHigh" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="35">
+      <Symbol>
+        <Component Name="Settings" />
+        <Component Name="TorqEFactorHigh" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="36">
+      <Symbol>
+        <Component Name="Settings" />
+        <Component Name="TorqEFactorLow" />
+      </Symbol>
+    </Access>
+    <Part Name="LIMIT" Version="1.0" UId="37" DisabledENO="true">
+      <TemplateValue Name="value_type" Type="Type">Real</TemplateValue>
+    </Part>
+    <Part Name="LIMIT" Version="1.0" UId="38" DisabledENO="true">
+      <TemplateValue Name="value_type" Type="Type">Real</TemplateValue>
+    </Part>
+    <Part Name="LIMIT" Version="1.0" UId="39" DisabledENO="true">
+      <TemplateValue Name="value_type" Type="Type">Real</TemplateValue>
+    </Part>
+    <Part Name="Ge" UId="40">
+      <TemplateValue Name="SrcType" Type="Type">Real</TemplateValue>
+    </Part>
+    <Part Name="Move" UId="41" DisabledENO="true">
+      <TemplateValue Name="Card" Type="Cardinality">1</TemplateValue>
+    </Part>
+  </Parts>
+  <Wires>
+    <Wire UId="42">
+      <Powerrail />
+      <NameCon UId="37" Name="en" />
+      <NameCon UId="40" Name="pre" />
+    </Wire>
+    <Wire UId="43">
+      <IdentCon UId="21" />
+      <NameCon UId="37" Name="MN" />
+    </Wire>
+    <Wire UId="44">
+      <IdentCon UId="22" />
+      <NameCon UId="37" Name="IN" />
+    </Wire>
+    <Wire UId="45">
+      <IdentCon UId="23" />
+      <NameCon UId="37" Name="MX" />
+    </Wire>
+    <Wire UId="46">
+      <NameCon UId="37" Name="eno" />
+      <NameCon UId="38" Name="en" />
+    </Wire>
+    <Wire UId="47">
+      <NameCon UId="37" Name="OUT" />
+      <IdentCon UId="24" />
+    </Wire>
+    <Wire UId="48">
+      <IdentCon UId="25" />
+      <NameCon UId="38" Name="MN" />
+    </Wire>
+    <Wire UId="49">
+      <IdentCon UId="26" />
+      <NameCon UId="38" Name="IN" />
+    </Wire>
+    <Wire UId="50">
+      <IdentCon UId="27" />
+      <NameCon UId="38" Name="MX" />
+    </Wire>
+    <Wire UId="51">
+      <NameCon UId="38" Name="eno" />
+      <NameCon UId="39" Name="en" />
+    </Wire>
+    <Wire UId="52">
+      <NameCon UId="38" Name="OUT" />
+      <IdentCon UId="28" />
+    </Wire>
+    <Wire UId="53">
+      <IdentCon UId="29" />
+      <NameCon UId="39" Name="MN" />
+    </Wire>
+    <Wire UId="54">
+      <IdentCon UId="30" />
+      <NameCon UId="39" Name="IN" />
+    </Wire>
+    <Wire UId="55">
+      <IdentCon UId="31" />
+      <NameCon UId="39" Name="MX" />
+    </Wire>
+    <Wire UId="56">
+      <NameCon UId="39" Name="OUT" />
+      <IdentCon UId="32" />
+    </Wire>
+    <Wire UId="57">
+      <IdentCon UId="33" />
+      <NameCon UId="40" Name="in1" />
+    </Wire>
+    <Wire UId="58">
+      <IdentCon UId="34" />
+      <NameCon UId="40" Name="in2" />
+    </Wire>
+    <Wire UId="59">
+      <NameCon UId="40" Name="out" />
+      <NameCon UId="41" Name="en" />
+    </Wire>
+    <Wire UId="60">
+      <IdentCon UId="35" />
+      <NameCon UId="41" Name="in" />
+    </Wire>
+    <Wire UId="61">
+      <NameCon UId="41" Name="out1" />
+      <IdentCon UId="36" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="9" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="A" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Limit Torq Set Factor between 1-1.5
+Efficiencies from 0-1 and TorqE Low must be less than TorqE High
+</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="B" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="C" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Limit Torq Factors</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="D" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v4">
+  <Parts>
+    <Access Scope="LiteralConstant" UId="21">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>1.0</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="GlobalVariable" UId="22">
+      <Symbol>
+        <Component Name="Settings" />
+        <Component Name="BOSpinFactor" />
+      </Symbol>
+    </Access>
+    <Access Scope="LiteralConstant" UId="23">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>2.0</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="GlobalVariable" UId="24">
+      <Symbol>
+        <Component Name="Settings" />
+        <Component Name="BOSpinFactor" />
+      </Symbol>
+    </Access>
+    <Access Scope="LiteralConstant" UId="25">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>1.0</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="GlobalVariable" UId="26">
+      <Symbol>
+        <Component Name="Settings" />
+        <Component Name="BOShiftRPM" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="27">
+      <Symbol>
+        <Component Name="Settings" />
+        <Component Name="SpeedLimLowRPM" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="28">
+      <Symbol>
+        <Component Name="Settings" />
+        <Component Name="BOShiftRPM" />
+      </Symbol>
+    </Access>
+    <Part Name="LIMIT" Version="1.0" UId="29" DisabledENO="true">
+      <TemplateValue Name="value_type" Type="Type">Real</TemplateValue>
+    </Part>
+    <Part Name="LIMIT" Version="1.0" UId="30" DisabledENO="true">
+      <TemplateValue Name="value_type" Type="Type">Real</TemplateValue>
+    </Part>
+  </Parts>
+  <Wires>
+    <Wire UId="31">
+      <Powerrail />
+      <NameCon UId="29" Name="en" />
+    </Wire>
+    <Wire UId="32">
+      <IdentCon UId="21" />
+      <NameCon UId="29" Name="MN" />
+    </Wire>
+    <Wire UId="33">
+      <IdentCon UId="22" />
+      <NameCon UId="29" Name="IN" />
+    </Wire>
+    <Wire UId="34">
+      <IdentCon UId="23" />
+      <NameCon UId="29" Name="MX" />
+    </Wire>
+    <Wire UId="35">
+      <NameCon UId="29" Name="eno" />
+      <NameCon UId="30" Name="en" />
+    </Wire>
+    <Wire UId="36">
+      <NameCon UId="29" Name="OUT" />
+      <IdentCon UId="24" />
+    </Wire>
+    <Wire UId="37">
+      <IdentCon UId="25" />
+      <NameCon UId="30" Name="MN" />
+    </Wire>
+    <Wire UId="38">
+      <IdentCon UId="26" />
+      <NameCon UId="30" Name="IN" />
+    </Wire>
+    <Wire UId="39">
+      <IdentCon UId="27" />
+      <NameCon UId="30" Name="MX" />
+    </Wire>
+    <Wire UId="40">
+      <NameCon UId="30" Name="OUT" />
+      <IdentCon UId="28" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="E" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="F" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>BO Spin Factor from 1-2
+Shift RPM from 1 to Speed limit
+
+</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="10" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="11" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Verify BO Setting</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="12" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource />
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="13" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="14" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="15" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="16" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <MultilingualText ID="17" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="18" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.FC>
+</Document>

@@ -1,0 +1,27 @@
+﻿FUNCTION "AoUI_Scaling" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT 
+      Measured : Real;   // Measured
+      Max : Real;   // Maximum mreasured value of output
+      Min : Real;   // Minimum measured value of output
+   END_VAR
+
+   VAR_OUTPUT 
+      s7Raw : Int;   // Raw Outputs to card 
+      mAOutput : Real;   // 4-20ma Output based on raw outputs
+   END_VAR
+
+
+BEGIN
+	(* #AoUI_Scaling Written BY Kristopher Gimenez January 23,2023
+	This block is used to convert a Measured value into a PS7 analog output and the corresponding 4-20mA signal based on Scale and Offset. 
+	*)
+	
+	
+	#s7Raw := REAL_TO_INT((#Measured-#Min)/(#Max - #Min) * 27648);
+	#mAOutput := ((#Measured-#Min)/(#Max-#Min) * 16.0) + 4.0;
+	
+	
+END_FUNCTION
+

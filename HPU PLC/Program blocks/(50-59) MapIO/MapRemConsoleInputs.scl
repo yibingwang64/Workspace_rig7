@@ -1,0 +1,56 @@
+﻿FUNCTION "MapRemConsoleInputs" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+
+BEGIN
+	(* #MapHPUConsoleInputs Written BY Kristopher Gimenez January 19,2023
+	This block is will map the input variables for the console dependant on whether a third part connection is made. It will also convert raw signals into measured values for the console inputs. 
+	*)
+	
+	(*
+	//To be Added Here
+	If Remote Console connect heartbeat OK, Remote Enable is On and Local Console Off use remote console values. 
+	*)
+	
+	//Digital Inputs
+	"LinkRetSw" := "RemConsole_In".LinkTiltRetr;
+	"TDAuxSw":= "RemConsole_In".TopDriveAux;
+	"LinkExtSw":= "RemConsole_In".LinkTiltExt;
+	"TDEnSW":= "RemConsole_In".TopDriveEn;
+	"HSLT_Sw":= "RemConsole_In".HSLTEn;
+	"HandlerFwdSw":= "RemConsole_In".HandlerFwd;
+	"HandlerRevSw":= "RemConsole_In".HandlerRev;
+	"MPNotRunning":= "RemConsole_In".MudPumpRunning;
+	"QuillLockSw":= "RemConsole_In".QuillLock;
+	"BUWClSw":= "RemConsole_In".BUWClose;
+	"BUWDnSw":= "RemConsole_In".BUWDown;
+	"BUWUpSw":= "RemConsole_In".BUWUp;
+	"TDModeMUSpinSw":= "RemConsole_In".TDModeMUSpin;
+	"TDModeMUTorqSw":= "RemConsole_In".TDModeMUTorq;
+	"TDModeDrillRevSw":= "RemConsole_In".TDModeRev;
+	"TDModeBreakOutSw":= "RemConsole_In".TDModeBO;
+	"ElevOpSw" := "RemConsole_In".ElevOp;
+	"TDExtSw":= "RemConsole_In".TDExt;
+	"ElevClSw":= "RemConsole_In".ElevCl;
+	"TDRetSw":= "RemConsole_In".TDRet;
+	"PTO_Sw":= "RemConsole_In".PTO;
+	"MSVClSw":= "RemConsole_In".MSVClose;
+	"MSVAutoSw":= "RemConsole_In".MSVAuto;
+	"MSVOpSw":= "RemConsole_In".MSVOpen;
+	"LinkFloatSw":= "RemConsole_In".LinkTiltFloat;
+	
+	//Analog Inputs
+	"MUTorqPotRaw" := "RemConsole_In".MUTorqLim;
+	"MUTorqPotV" := "AiV_Raw2V"("MUTorqPotRaw");
+	"DrillTorqPotRaw" := "RemConsole_In".DrillTorqLim;
+	"DrillTorqPotV" := "AiV_Raw2V"("DrillThrottlePotRaw");
+	"DrillThrottlePotRaw" := "RemConsole_In".DrillThrottle;
+	"DrillThrottlePotV" := "AiV_Raw2V"("DrillThrottlePotRaw");
+	
+	
+	
+	
+	
+	
+END_FUNCTION
+

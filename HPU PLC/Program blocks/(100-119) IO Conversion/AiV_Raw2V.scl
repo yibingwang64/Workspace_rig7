@@ -1,0 +1,19 @@
+﻿FUNCTION "AiV_Raw2V" : Real
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT 
+      RawInput : Int;
+   END_VAR
+
+
+BEGIN
+	(* #AiV_Raw2V Written BY Kristopher Gimenez January 19,2023
+	This block is used to convert the Raw voltage input signal to a V for Unipolar 0-10 V inputs setup. Note 10V = 27648. 
+	*)
+	
+	
+	#AiV_Raw2V := INT_TO_REAL(#RawInput) / 27648.0 * 10;
+	
+	
+END_FUNCTION
+

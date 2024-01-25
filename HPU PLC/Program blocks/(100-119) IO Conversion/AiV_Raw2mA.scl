@@ -1,0 +1,20 @@
+﻿FUNCTION "AiV_Raw2mA" : Real
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT 
+      RawInput : Int;
+   END_VAR
+
+
+BEGIN
+	(* #AiV_Raw2mA Written BY Kristopher Gimenez January 19,2023
+	This block is used to convert the Raw mA input signal to a mA for Unipolar 4-20ma inputs setup. 
+	Note 100% signal = 20mA = 27648. 
+	*)
+	
+	
+	#AiV_Raw2mA := (INT_TO_REAL(#RawInput) / 27648.0 * 16.0)+4.0;
+	
+	
+END_FUNCTION
+

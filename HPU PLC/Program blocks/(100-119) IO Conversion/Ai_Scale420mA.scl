@@ -1,0 +1,27 @@
+﻿FUNCTION "Ai_Scale420mA" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT 
+      "420mAInput" : Real;
+      OutMin : Real;
+      OutMax : Real;
+   END_VAR
+
+   VAR_OUTPUT 
+      OutScaledReal : Real;
+   END_VAR
+
+
+BEGIN
+	(* Ai_Scale420mA Written BY Kristopher Gimenez January 24,2023
+	This block is used to convert a 4-20mA input to a scaled output based on input Min and Max
+	*)
+	
+	
+	#OutScaledReal := ((#"420mAInput" - 4) / 16 * (#OutMax - #OutMin)) + #OutMin;
+	
+	
+	
+	
+END_FUNCTION
+
